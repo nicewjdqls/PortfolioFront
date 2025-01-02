@@ -1,0 +1,18 @@
+/* FooterPage.css */
+
+/* 푸터 */
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .footer-logo span {
+    font-size: 14px;
+  }
+  

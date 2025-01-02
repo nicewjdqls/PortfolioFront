@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // CSS 파일 추가
+import './Header.css'; // CSS 파일 추가
 
 const Header = () => {
     return (
         <header className="header">
             <div className="header-image">
-            <img src="/banner.png" alt="헤더 이미지" className="header-banner" />
+            <img src="/ban.png" alt="헤더 이미지" className="header-banner" />
             <div className="header-title">
                 </div>
             </div>

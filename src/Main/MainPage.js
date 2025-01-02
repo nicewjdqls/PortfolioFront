@@ -8,18 +8,16 @@ const MainPage = () => {
 
     return (
         <div className="main-page">
-                                <h2 className="attention-title">Projects</h2>
+         <h2 className="attention-title">Projects</h2>
 
-            {/* 두 섹션을 나누기 위한 flex 컨테이너 */}
             <div className="about-and-cards-section">
             <div className="about-image" onClick={handleClick}>
-                        <img src="/Certificate_01.png" alt="김지민" className="profile-image" />
+                        <img src="/vivi.png" alt="김지민" className="profile-image" />
                     </div>
                 {/* About Me 섹션 */}
                 <div className="about-section">
 
                     <div className="about-content">
-                        <h2 className="about-title">About me</h2>
                         <p>이름: 구정빈</p>
                         <p>나이: 만33세</p>
                         <p>학사: 대학교 (배재대학교 전자공학과 졸업)</p>
@@ -54,19 +52,22 @@ const MainPage = () => {
                     </div>
                     
                     <div className="tags">
-                <span className="tag">#경력</span>
-                <span className="tag">#웹퍼블리셔</span>
-                <span className="tag">#웹디자이너</span>
-                <span className="tag">#김지민</span>
-                <span className="tag">#웹기획</span>
-                <span className="tag">#취미는 디자인</span>
-                <span className="tag">#특기는 코딩</span>
+                <span className="tag">#구정빈</span>
+                <span className="tag">#신입 개발자</span>
+                <span className="tag">#자신감</span>
+                <span className="tag">#취미는 바이올린</span>
+                <span className="tag">#특기는 농구</span>
             </div>
                 </div>
+                
+            </div>
+            <div className="main-stack-section">
+                <h1 className="about-section">Main stack</h1>
+                <img src="/stack.png" />
             </div>
 
-
         </div>
+
     );
 };
 
