@@ -1,0 +1,116 @@
+/* 전체 레이아웃을 두 섹션으로 나누기 위한 flex 컨테이너 */
+.about-and-cards-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* 두 섹션 간의 간격 */
+    margin-top: 40px;
+}
+
+/* About Me 섹션 */
+.about-section {
+    flex: 1;
+    padding-right: 20px;
+    margin-left: 20px; /* 이미지와 About Me 텍스트 사이에 여백 추가 */
+}
+
+/* About 이미지 스타일 */
+.about-image {
+    margin-bottom: 20px; /* 이미지와 About Me 콘텐츠 사이에 여백 추가 */
+}
+
+/* 카드 섹션 스타일 */
+.cards-section {
+    flex: 2; /* About 섹션보다 크기를 2배로 설정하여 카드 영역을 넓힘 */
+    display: flex;
+    flex-direction: row; /* 카드들을 가로로 나열 */
+    gap: 20px; /* 카드들 사이 간격 */
+    align-items: flex-start;
+}
+
+/* 개별 카드 스타일 */
+.card {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 20px); /* 3개 카드가 한 줄에 배치되도록 설정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* 카드 hover 효과 */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* 카드 이미지 스타일 */
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* 카드 내부 텍스트 스타일 */
+.card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* 제목 스타일 */
+.attention-title {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-bottom: 20px; /* 카드와 제목 간의 간격 */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 태그 컨테이너 */
+.tags {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* 여러 줄로 나눠서 태그를 표시 */
+  }
+  
+  /* 개별 태그 스타일 */
+  .tag {
+    background-color: #f1f1f1; /* 배경색 */
+    color: #333; /* 텍스트 색상 */
+    margin: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer; /* 마우스 오버 시 손가락 모양 */
+    transition: background-color 0.3s;
+    font-family: 'Arial', sans-serif; /* 글꼴 설정 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+  
+  /* 태그 hover 시 배경 색 변경 */
+  .tag:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .about-content {
+    max-width: 400px;
+    margin-right: 20px;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    line-height: 1.4; /* 줄 간격을 줄여서 글자 위아래 간격을 줄임 */
+}
+  .about-image {
+    cursor: pointer; /* 이미지 클릭 가능하게 설정 */
+  }
+  
+  .about-image img {
+    width: 300px; /* 이미지 크기 조정 */
+    height: auto;
+    border-radius: 10px; /* 이미지 모서리 둥글게 */
+  }
