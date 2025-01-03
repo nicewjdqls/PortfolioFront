@@ -183,12 +183,12 @@ const MainPage = () => {
              <div className="main-stack-section">
              <h1 className="about-section">Project</h1>
              <div className="cards-section">
-                    <div className="card" onClick={handleClick}>
+                    <Link to="/portfolio" className="card">
                         <img src="/dasom.png" alt="백엔드 엔지니어" />
                         <h3>팀 프로젝트</h3>
                         <p>포스타임</p>
                         <p>서울 강남구 · 경력 2-7년</p>
-                    </div>
+                    </Link>
                     <div className="card" onClick={handleClick}>
                         <img src="/dasom.png" alt="백엔드 엔지니어" />
                         <h3>팀 프로젝트</h3>

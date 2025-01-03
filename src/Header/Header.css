@@ -3,106 +3,108 @@
     position: relative;
     text-align: center;
     color: white;
-  }
-  
-  .header-image {
+}
+
+.header-image {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
-  }
-  
-  .header-banner {
+}
+
+.header-banner {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  .header-title {
+}
+
+.header-title {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  /* 네비게이션 바 스타일 */
-  .nav-bar {
-    position: absolute;
+}
+
+/* 네비게이션 바 스타일 */
+.nav-bar {
+    position: fixed; /* 항상 상단에 고정 */
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100%; /* 브라우저 너비에 꽉 채움 */
     background-color: rgba(255, 255, 255, 0.7);
     color: #fff;
-    z-index: 10;
-    padding: 10px 0;
+    z-index: 1000;
+    padding: 10px 0; /* 고정된 높이 */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* 로고 스타일 */
-  .logo1 {
-    width: 150px;
-    height: 50px;
+    font-size: clamp(16px, 2vw, 20px); /* 최소 16px, 최대 20px */
+    box-sizing: border-box; /* 크기 계산에 padding 포함 */
+}
+
+/* 로고 스타일 */
+.logo1 {
+    width: clamp(120px, 15vw, 200px);  /* 최소 120px, 최대 200px */
+    height: clamp(40px, 6vw, 70px);    /* 최소 40px, 최대 70px */
     background-image: url('/public/koo.png');
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
     display: inline-block;
     border: none;
-  }
-  
-  /* 네비게이션 항목 스타일 */
-  .nav-bar ul {
+}
+
+/* 네비게이션 항목 스타일 */
+.nav-bar ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
     justify-content: space-around;
     align-items: center;
-  }
-  
-  /* 각 리스트 항목 */
-  .nav-bar li {
+}
+
+/* 각 리스트 항목 */
+.nav-bar li {
     margin: 0 15px;
+    font-size: clamp(12px, 2vw, 16px); /* 최소 12px, 최대 16px */
     border: 2px solid transparent;
-  }
-  
-  /* 네비게이션 링크 스타일 */
-  .nav-bar li a {
+}
+
+/* 네비게이션 링크 스타일 */
+.nav-bar li a {
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: 16px;
-    padding: 10px 15px;
+    font-size: clamp(16px, 2vw, 20px); /* 최소 16px, 최대 20px */
+    padding: 12px 18px; /* 고정된 패딩 */
     border-radius: 5px;
     transition: all 0.3s ease;
     font-weight: bold;
     border: 2px solid transparent;
-  }
-  
-  /* 네비게이션 링크 hover 스타일 */
-  .nav-bar li a:hover {
+}
+
+/* 네비게이션 링크 hover 스타일 */
+.nav-bar li a:hover {
     background-color: transparent;
     color: #1f8c0e;
     border-color: #1f8c0e;
-  }
-  
-  /* 네비게이션 링크 active 스타일 */
-  .nav-bar li a:active {
+}
+
+/* 네비게이션 링크 active 스타일 */
+.nav-bar li a:active {
     background-color: #ffffff;
-  }
-  
-  /* 버튼 스타일 */
-  .btn-header {
+}
+
+/* 버튼 스타일 */
+.btn-header {
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
+    font-size: clamp(24px, 4vw, 40px); /* 최소 24px, 최대 40px */
     font-weight: bold;
-    padding: 8px 15px;
+    padding: 10px 18px; /* 고정된 패딩 */
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .btn-header:hover {
+}
+
+.btn-header:hover {
     background-color: #007bff;
     color: #fff;
-  }
-  
+}

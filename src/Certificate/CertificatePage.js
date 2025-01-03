@@ -4,6 +4,8 @@ import image3 from './net.png';
 import image7 from './Certificate_07.png';
 import image8 from './Certificate_08.png';
 import image10 from './TS.png';
+import image11 from './linux.png';
+
 import './CertificatePage.css'; // CSS 파일을 추가하여 스타일 적용
 
 function CertificatePage() {
@@ -37,7 +39,7 @@ function CertificatePage() {
         <h2 className="carousel-sub-title">취득일 2024.12.10</h2>
         <CCarousel interval={1000} controls transition="crossfade">
           <CCarouselItem className="ccarousel-item">
-            <CImage className="image-size" src={image7} alt="slide 3" />
+            <CImage className="image-size" src={image11} alt="slide 3" />
           </CCarouselItem>
         </CCarousel>
       </div>

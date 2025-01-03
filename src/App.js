@@ -10,9 +10,10 @@ import Header from "./Header/Header";
 import MainPage from "./Main/MainPage";
 import CertificatePage from "./Certificate/CertificatePage";
 import Footer from "./Footer/FooterPage";
+import Portfolio from "./Portfolio/PortfolioPage"; // 컴포넌트 이름을 Portfolio로 수정
+import Pdf from "./Pdf/PdfPage"; // 컴포넌트 이름을 Portfolio로 수정
 
 const App = () => {
-
   return (
     <Router>
       <div className="App">
@@ -24,6 +25,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/certificate" element={<CertificatePage />} />
+            <Route path="/portfolio" element={<Portfolio />} /> {/* 경로를 소문자 'portfolio'로 수정 */}
+            <Route path="/pdf" element={<Pdf />} /> 
+
           </Routes>
         </main>
 
