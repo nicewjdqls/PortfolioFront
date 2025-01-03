@@ -8,6 +8,11 @@ const MainPage = () => {
         alert("더 많은 정보를 확인하세요!");
     };
 
+    const handleBlogClick = () => {
+        // /blog.png가 있는 카드 클릭 시 리다이렉션
+        window.open('https://blog.naver.com/nicewjdqls', '_blank');
+    };
+
     useEffect(() => {
         const sketch = (p) => {
             let fireworks = [];
@@ -164,7 +169,7 @@ const MainPage = () => {
                         <p>• 석사: 건국대학교 방위사업학과 졸업</p>
                         <p>• 수료 내역: 2024.6.27 - 2024.12.27</p>
                         <p>• KGitbank DevSecOps수료 (팀장/우수 수료생 선정)</p>
-                        <p>• 경력 사항: 2011.3 - 2024.6 육군 대위전역</p>
+                        <p>• 경력 사항: 2015.3 - 2024.6 육군 대위전역</p>
                         <p>• 프로젝트 : DasomStudy Cafe 웹사이트 (5개월)</p>
                         <div className="tags">
                         <span className="tag">#구정빈</span>
@@ -184,22 +189,13 @@ const MainPage = () => {
              <h1 className="about-section">Project</h1>
              <div className="cards-section">
                     <Link to="/portfolio" className="card">
-                        <img src="/dasom.png" alt="백엔드 엔지니어" />
-                        <h3>팀 프로젝트</h3>
-                        <p>포스타임</p>
-                        <p>서울 강남구 · 경력 2-7년</p>
+                        <img src="/daslogo.png" alt="백엔드 엔지니어" />
                     </Link>
-                    <div className="card" onClick={handleClick}>
-                        <img src="/dasom.png" alt="백엔드 엔지니어" />
-                        <h3>팀 프로젝트</h3>
-                        <p>포스타임</p>
-                        <p>서울 강남구 · 경력 2-7년</p>
+                    <div className="card" onClick={handleBlogClick}>
+                        <img src="/blog.png" alt="블로그" target="_blank"/>
                     </div>
                     <div className="card" onClick={handleClick}>
-                        <img src="/dasom.png" alt="백엔드 엔지니어" />
-                        <h3>팀 프로젝트</h3>
-                        <p>포스타임</p>
-                        <p>서울 강남구 · 경력 2-7년</p>
+                        <img src="/git.png" alt="백엔드 엔지니어" />
                     </div>
                     </div>
                 </div>

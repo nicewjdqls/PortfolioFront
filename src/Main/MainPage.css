@@ -47,7 +47,7 @@
     display: flex;
     flex-direction: row; /* 카드들을 가로로 나열 */
     gap: 20px; /* 카드들 사이 간격 */
-    align-items: flex-start;
+    align-items: stretch; /* 카드들의 높이를 동일하게 맞추기 */
     margin-top: 20px; /* 카드 섹션을 위쪽에 좀 더 가까이 배치 */
 }
 

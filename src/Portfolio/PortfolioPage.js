@@ -47,12 +47,22 @@ const VideoPlayer = () => {
         </div>
         <div className="cards-section">
         <img src="/firstpage.png" alt="백엔드 엔지니어" />
-                            <Link to="/pdf" className="card">
-                                <img src="/PDF.png" alt="백엔드 엔지니어" />
-                                <h3>DasomStudyCafe PDF</h3>
-                                <p>발표자료</p>
-                            </Link>
-                            </div>
+            <Link to="/pdf1" className="card" target="_blank">
+                <img src="/PDF.png" alt="백엔드 엔지니어" />
+                <h3>DasomStudyCafe PDF</h3>
+                <p>발표자료</p>
+            </Link>
+            <Link to="/pdf2" className="card" target="_blank">
+                <img src="/PDF.png" alt="백엔드 엔지니어" />
+                <h3>DasomStudyCafe PDF</h3>
+                <p>발표자료</p>
+            </Link>
+            <Link to="/pdf3" className="card" target="_blank">
+                <img src="/PDF.png" alt="백엔드 엔지니어" />
+                <h3>DasomStudyCafe PDF</h3>
+                <p>발표자료</p>
+            </Link>
+        </div>
         </div>
 
     );
