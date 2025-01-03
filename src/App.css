@@ -5,10 +5,13 @@
   box-sizing: border-box;
 }
 
-/* 기본적인 스타일 설정 */
+/* 전체 페이지에 구름 배경을 추가 */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background: url('https://www.transparenttextures.com/patterns/clouds.png') repeat, #f8f9fa; /* 구름 배경 이미지 */
+  background-size: cover; /* 배경 이미지 크기 조정 */
+  background-attachment: fixed; /* 배경이 스크롤 시 따라가지 않도록 고정 */
+  height: 100vh; /* 전체 화면을 차지하도록 설정 */
 }
 
 /* 전체 컨테이너 스타일 */
@@ -24,6 +27,7 @@ body {
   flex: 1;
   padding: 20px;
   overflow: auto;
+  z-index: 10; /* 콘텐츠가 배경 이미지 위에 표시되도록 설정 */
 }
 
 /* 버튼 스타일 */
