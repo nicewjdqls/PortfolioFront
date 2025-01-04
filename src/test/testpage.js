@@ -1,47 +1,64 @@
-import React from 'react';
-import image1 from './Certificate_03.png';
-import image2 from './Certificate_08.png';
-import image3 from './Certificate_07.png';
-import image4 from './net.png';
-import './test.css';
+import React, { useState } from "react";
+import TodoBoard from "../components/TodoBoard";  // TodoBoard 컴포넌트 import
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 
+const AboutPage = () => {
+  const [todoList, setTodoList] = useState([
+    { id: 1, task: "방명록 1", isComplete: false },
+    { id: 2, task: "방명록 2", isComplete: false },
+  ]);
+  const [todoValue, setTodoValue] = useState("");
 
-// MyComponent 컴포넌트
-const MyComponent = () => {
-    return (
-        <div className="image-gallery">
-            <div className="image-item">
-                <img src={image3} alt="Frame 13" />  
-            </div>
-            <div className="image-item">
-                <img src={image4} alt="Frame 15" />
-            </div>
-            <div className="image-item">
-                <img src={image1} alt="고정석 기간권" />
-            </div>
-            <div className="image-item">
-                <img src={image2} alt="부대시설" />
-            </div>
-            <div className="image-item">
-                <img src={image2} alt="부대시설" />
-            </div>
-            <div className="image-item">
-                <img src={image2} alt="부대시설" />
-            </div>
-        </div>
+  const addTodo = () => {
+    const newTask = {
+      id: todoList.length + 1,
+      task: todoValue,
+      isComplete: false,
+    };
+    setTodoList([...todoList, newTask]);
+    setTodoValue("");  // 입력 필드 초기화
+  };
+
+  const deleteItem = (id) => {
+    setTodoList(todoList.filter((item) => item.id !== id));
+  };
+
+  const toggleComplete = (id) => {
+    setTodoList(
+      todoList.map((item) =>
+        item.id === id ? { ...item, isComplete: !item.isComplete } : item
+      )
     );
-}
+  };
 
+  return (
+    <Container>
+      <Row className="add-item-row">
+        <Col xs={12} sm={10}>
+          <input
+            type="text"
+            placeholder="방명록을 작성하세요"
+            onChange={(event) => setTodoValue(event.target.value)}
+            className="input-box"
+            value={todoValue}
+          />
+        </Col>
+        <Col xs={12} sm={2}>
+          <button onClick={addTodo} className="button-add">
+            추가
+          </button>
+        </Col>
+      </Row>
 
+      <TodoBoard
+        todoList={todoList}
+        deleteItem={deleteItem}
+        toggleComplete={toggleComplete}
+      />
+    </Container>
+  );
+};
 
-function ChargeInfoPage() {
-    return (
-        <main className="chargeinfo-page">
-            <p className="sub-title">Usage fee</p>
-            <h1 className="main-title">이용요금</h1>
-            <MyComponent/>
-        </main>
-    )
-}
-
-export default ChargeInfoPage;
+export default AboutPage;

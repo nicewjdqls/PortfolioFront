@@ -1,0 +1,176 @@
+/* 기본 스타일 */
+.about-page {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .about-header {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+  }
+  
+  .about-profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .about-personal-info {
+    font-size: 1rem;
+    color: #000;
+  }
+  
+  .about-personal-info h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  .about-personal-info p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  /* 섹션 스타일 */
+  .about-education,
+  .about-experience,
+  .about-projects {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ddd; /* 섹션 구분선 추가 */
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: left;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2c3e50; /* 제목 아래 선 */
+    padding-bottom: 5px;
+  }
+  
+  .about-experience-item, .about-project-item {
+    margin-bottom: 20px;
+  }
+  
+  /* 경력 및 프로젝트 내용 스타일 */
+  .about-experience-item h3, .about-project-item h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+  }
+  
+  .about-experience-item p, .about-project-item p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* 업무 및 성과 항목 */
+  h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  ul {
+    margin-left: 20px;
+  }
+  
+  ul li {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  /* 테이블 스타일 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  td {
+    color: #555;
+  }
+  
+  /* Footer 스타일 */
+  .about-footer {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #333;
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+  }
+  
+  .about-footer p {
+    margin-bottom: 10px;
+  }
+  
+  /* 링크 스타일 */
+  a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    color: #1d6fa5;
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .about-page {
+      padding: 15px;
+    }
+  
+    .about-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .about-profile-pic {
+      margin-bottom: 20px;
+    }
+  
+    h2, h3 {
+      font-size: 1.6rem;
+    }
+  
+    p, ul li {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2, h3 {
+      font-size: 1.4rem;
+    }
+  
+    .about-footer {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -12,6 +12,9 @@ import CertificatePage from "./Certificate/CertificatePage";
 import Footer from "./Footer/FooterPage";
 import Portfolio from "./Portfolio/PortfolioPage"; // 컴포넌트 이름을 Portfolio로 수정
 import Test from "./test/testpage"; // 컴포넌트 이름을 Portfolio로 수정
+import SideBar from "./SideBar/SideBarPage";
+import About from "./About/AboutPage";
+
 import Pdf1 from "./Pdf/PdfPage1"; // 컴포넌트 이름을 Portfolio로 수정
 import Pdf2 from "./Pdf/PdfPage2"; // 컴포넌트 이름을 Portfolio로 수정
 import Pdf3 from "./Pdf/PdfPage3"; // 컴포넌트 이름을 Portfolio로 수정
@@ -28,8 +31,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/certificate" element={<CertificatePage />} />
-            <Route path="/portfolio" element={<Portfolio />} /> {/* 경로를 소문자 'portfolio'로 수정 */}
-            <Route path="/test" element={<Test />} /> {/* 경로를 소문자 'portfolio'로 수정 */}
+            <Route path="/portfolio" element={<Portfolio />} /> 
+            <Route path="/test" element={<Test />} /> 
+            <Route path="/sidebar" element={<SideBar />} /> 
+            <Route path="/about" element={<About />} /> 
+
             <Route path="/pdf1" element={<Pdf1 />} /> 
             <Route path="/pdf2" element={<Pdf2 />} /> 
             <Route path="/pdf3" element={<Pdf3 />} /> 

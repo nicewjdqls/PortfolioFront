@@ -1,0 +1,19 @@
+.side-bar {
+    background: rgba(173, 181, 189, 0.50);
+    backdrop-filter: blur(2.800000190734863px);
+  }
+
+  .size {
+    width: 100%; /* 이미지 크기 조정 (필요에 따라 수정) */
+    margin-top: 50px; /* 위쪽 간격 */
+    margin-bottom: 50px; /* 아래쪽 간격 */
+  }
+  
+  
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+    margin-top: 20px; /* 이미지와 간격 */
+  }
+  

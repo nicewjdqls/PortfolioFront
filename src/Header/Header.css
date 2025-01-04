@@ -8,7 +8,7 @@
 .header-image {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 700px;
     overflow: hidden;
 }
 
@@ -25,20 +25,6 @@
     transform: translate(-50%, -50%);
 }
 
-/* 네비게이션 바 스타일 */
-.nav-bar {
-    position: fixed; /* 항상 상단에 고정 */
-    top: 0;
-    left: 0;
-    width: 100%; /* 브라우저 너비에 꽉 채움 */
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #fff;
-    z-index: 1000;
-    padding: 10px 0; /* 고정된 높이 */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-    font-size: clamp(16px, 2vw, 20px); /* 최소 16px, 최대 20px */
-    box-sizing: border-box; /* 크기 계산에 padding 포함 */
-}
 
 /* 로고 스타일 */
 .logo1 {
@@ -62,10 +48,21 @@
     align-items: center;
 }
 
+/* 네비게이션 바 스타일 */
+.nav-bar {
+    position: fixed; /* 항상 상단에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 브라우저 너비에 꽉 채움 */
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #fff;
+    z-index: 1000;
+}
 /* 각 리스트 항목 */
+
 .nav-bar li {
     margin: 0 15px;
-    font-size: clamp(12px, 2vw, 16px); /* 최소 12px, 최대 16px */
+    font-size: clamp(30px, 2vw, 40px); /* 최소 12px, 최대 16px */
     border: 2px solid transparent;
 }
 
@@ -108,3 +105,28 @@
     background-color: #007bff;
     color: #fff;
 }
+
+/* 로그인 버튼 기본 스타일 */
+.p-button {
+    border: 2px solid transparent;  /* 기본 테두리는 투명 */
+    border-radius: 8px;  /* 모서리 둥글게 */
+    padding: 8px 16px;  /* 버튼 안쪽 여백 */
+    background-color: white;  /* 배경색 흰색 */
+    color: black;  /* 텍스트 색상 */
+    font-size: 16px;  /* 폰트 크기 */
+    transition: all 0.3s ease;  /* 부드러운 효과 */
+  }
+  
+  /* 마우스를 올렸을 때 테두리만 보이도록 */
+  .p-button:hover {
+    border: 2px solid #333;  /* 테두리 색상을 어두운 색으로 */
+    background-color: transparent;  /* 배경색을 투명하게 */
+    color: #333;  /* 텍스트 색상도 어두운 색으로 */
+  }
+  
+  /* 마우스를 클릭했을 때(Active 상태) 버튼 효과 */
+  .p-button:active {
+    background-color: #f0f0f0;  /* 클릭 시 배경색 */
+    border: 2px solid #333;  /* 클릭 시 테두리 색 */
+  }
+  

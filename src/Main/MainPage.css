@@ -1,177 +1,173 @@
-.about-and-cards-section {
-    display: flex;
-    justify-content: center; /* 가로로 중앙 정렬 */
-    align-items: center; /* 세로로 중앙 정렬 */
-    gap: 20px; /* 두 섹션 간의 간격 */
-    margin-top: 40px;
-}
+/* MainPage.css */
 
-
-.about-section {
-    flex: 1;
-    padding-right: 20px;
-    margin-left: 20px; /* 이미지와 About Me 텍스트 사이에 여백 추가 */
-    font-family: "Pretendard Light", sans-serif;
-    font-weight: bold;
-}
-
-/* about-content 수정 */
-.about-content {
-    flex: 1; /* about-content가 오른쪽 공간을 더 많이 차지하도록 설정 */
-    margin-right: 20px;
-    text-align: left; /* 텍스트 왼쪽 정렬 */
-    line-height: 1.3; /* 줄 간격을 줄여서 글자 위아래 간격을 줄임 */
-    min-width: 0; /* 최소 너비를 0으로 설정하여 flex가 더 많은 공간을 차지하게 유도 */
-    width: 100%; /* 100% 너비로 설정하여 가능한 모든 공간을 차지하도록 설정 */
-    max-width: 800px; /* 최대 너비 제한 */
-    white-space: nowrap; /* 텍스트가 한 줄로 유지되도록 설정 */
-    overflow: hidden; /* 텍스트가 영역을 벗어나지 않도록 설정 */
-    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 말줄임표(...) 표시 */
-}
-
-.about-image {
-    cursor: pointer; /* 이미지 클릭 가능하게 설정 */
-    width: 300px; /* 이미지 크기 조정 */
-    height: auto;
-    border-radius: 10px; /* 이미지 모서리 둥글게 */
-}
-
-.about-image img {
-    width: 300px; /* 이미지 크기 조정 */
-    height: auto;
-    border-radius: 10px; /* 이미지 모서리 둥글게 */
-}
-
-/* 카드 섹션 스타일 */
-.cards-section {
-    display: flex;
-    flex-direction: row; /* 카드들을 가로로 나열 */
-    gap: 20px; /* 카드들 사이 간격 */
-    align-items: stretch; /* 카드들의 높이를 동일하게 맞추기 */
-    margin-top: 20px; /* 카드 섹션을 위쪽에 좀 더 가까이 배치 */
-}
-
-/* 개별 카드 스타일 */
-.card {
-    background-color: #f1f1f1;
-    border-radius: 8px;
+/* 메인 페이지 */
+.main-page {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    text-align: center;
-    flex: 1 1 calc(33.333% - 20px); /* 3개 카드가 한 줄에 배치되도록 설정 */
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    min-width: 250px; /* 최소 너비 설정 */
-    max-width: 350px; /* 최대 너비 제한 */
-}
-
-/* 카드 hover 효과 */
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* 카드 이미지 스타일 */
-.card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
-/* 카드 내부 텍스트 스타일 */
-.card h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    white-space: nowrap; /* 텍스트가 한 줄로 유지되도록 설정 */
-    overflow: hidden;
-    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 말줄임표(...) 표시 */
-}
-
-.card p {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #777;
-    white-space: nowrap; /* 텍스트가 한 줄로 유지되도록 설정 */
-    overflow: hidden;
-    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 말줄임표(...) 표시 */
+    border-radius: 10px;
 }
 
 /* 제목 스타일 */
 .attention-title {
-    text-align: center; /* 텍스트 중앙 정렬 */
-    margin-bottom: 20px; /* 카드와 제목 간의 간격 */
-    font-size: 24px;
+    text-align: left; /* 왼쪽 정렬 */
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+/* 소개 섹션 */
+.about-section {
+    font-size: 1.8rem;
     font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
-/* 태그 컨테이너 */
-.tags {
-    margin-top: 20px;
+/* 이미지 및 소개 내용 영역 */
+.about-and-cards-section {
     display: flex;
-    flex-wrap: wrap; /* 여러 줄로 나눠서 태그를 표시 */
-}
-
-/* 개별 태그 스타일 */
-.tag {
-    background-color: #f1f1f1; /* 배경색 */
-    color: #333; /* 텍스트 색상 */
-    margin: 5px;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer; /* 마우스 오버 시 손가락 모양 */
-    transition: background-color 0.3s;
-    font-family: 'Arial', sans-serif; /* 글꼴 설정 */
-    text-align: center; /* 텍스트 중앙 정렬 */
-}
-
-/* 태그 hover 시 배경 색 변경 */
-.tag:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-/* Main stack 섹션 */
-.main-stack-section {
-    margin-top: 100px; /* Main stack과 그 위 섹션 간의 간격 */
-}
-
-.main-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* 전체 페이지 중앙 정렬 */
     justify-content: center;
-    text-align: center; /* 텍스트를 중앙 정렬 */
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+    position: relative; /* canvas가 이 영역 내에 들어가도록 함 */
+    overflow: hidden; /* 폭죽 애니메이션이 영역 밖으로 나가지 않도록 함 */
 }
 
+/* 프로필 이미지 */
+.about-image {
+    cursor: pointer;
+    width: 320px;
+    height: 320px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
 
-.cloud-background {
-    position: absolute;
-    top: 0;
-    left: 0;
+.about-image:hover {
+    transform: scale(1.05); /* 호버 시 크기 증가 */
+}
+
+.about-image img {
     width: 100%;
     height: 100%;
-    z-index: -1; /* 배경으로 설정 */
+    object-fit: cover;
 }
 
-.about-and-cards-section {
-    position: relative; /* 캔버스를 다른 콘텐츠 뒤에 배치할 수 있도록 설정 */
-    justify-content: center; /* 가로로 중앙 정렬 */
-    align-items: center; /* 세로로 중앙 정렬 */
-    gap: 20px;
-    margin-top: 40px;
+/* 소개 내용 */
+.about-content {
+    flex: 1;
+    max-width: 800px;
+    text-align: left;
+    line-height: 1.8;
+    padding-right: 20px;
+}
+
+.about-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* 카드 섹션 */
+.cards-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    max-width: 320px;
+    min-width: 280px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card img {
     width: 100%;
-    max-width: 1200px; /* 중앙에 맞추기 위한 최대 너비 */
-    padding: 0 20px; /* 양쪽에 여백 추가 */
-    overflow: hidden; /* 캔버스가 넘쳐도 보이지 않도록 설정 */
-
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
+.card img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}
+
+/* 폭죽 배경 캔버스 스타일 */
 .about-and-cards-section canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* 캔버스를 섹션 뒤로 */
+    z-index: -2; /* 폭죽 애니메이션을 배경으로 설정 */
+}
+
+/* 소개 내용 및 프로필 이미지 z-index 설정 */
+.about-content, .about-image {
+    position: relative;
+    z-index: 1; /* 텍스트와 이미지가 폭죽 애니메이션 위에 오도록 설정 */
+}
+
+/* 태그 스타일 */
+.tags {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* 태그 간격 확대 */
+    justify-content: center;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 12px 18px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold; /* 태그 글씨 두껍게 */
+}
+
+.tag:hover {
+    background-color: #007bff;
+    color: #fff;
 }

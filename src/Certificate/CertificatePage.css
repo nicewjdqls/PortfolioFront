@@ -1,88 +1,99 @@
 img {
-  /* margin-left: 20px;이미지의 왼쪽에 20px 여백 추가 */
- /* margin-right: 20px;이미지의 오른쪽에 20px 여백 추가 */
+  /* 이미지의 기본 여백 설정 (현재 사용되지 않음) */
+  /* margin-left: 20px; 이미지 왼쪽 여백 */
+  /* margin-right: 20px; 이미지 오른쪽 여백 */
 }
 
 /* 이미지 컨테이너 스타일링 */
 .image-container {
-display: flex;
-justify-content: center; /* 수평 중앙 정렬 */
-align-items: center; /* 수직 중앙 정렬 */
+  display: flex; /* Flexbox 레이아웃 사용 */
+  justify-content: center; /* 컨테이너 내 요소를 수평 중앙 정렬 */
+  align-items: center; /* 컨테이너 내 요소를 수직 중앙 정렬 */
 }
 
-/* MyComponent.css */
+/* 이미지 갤러리 스타일링 */
 .image-gallery {
-display: flex; /* Flexbox 레이아웃 사용 */
-flex-wrap: wrap; /* 세로로 정렬 */
-justify-content: center; /* 중앙 정렬 */
-padding: 0 50px; /* 패딩 */
-gap : 20px
+  display: flex; /* Flexbox 레이아웃 */
+  flex-wrap: wrap; /* 줄바꿈 허용 (이미지가 여러 행에 걸쳐 나타남) */
+  justify-content: center; /* 이미지들을 중앙 정렬 */
+  padding: 0 50px; /* 좌우 여백 추가 */
+  gap: 20px; /* 이미지 간 간격 */
 }
 
+/* 각 이미지 아이템 스타일링 */
 .image-item {
-flex: 0 1 calc(33.33% - 20px); /* 너비를 3등분하고 간격 조정 */
-width: 100%; /* 이미지 너비 (필요에 따라 조정) */
-max-width: 1920px; /* 최대 너비 설정 */
-margin-bottom: 20px; /* 이미지 간 여백 */
-border-radius: 8px; /* 모서리 둥글게 */
-overflow: hidden; /* 이미지가 컨테이너를 넘지 않도록 설정 */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-background-color: #fff; /* 배경색 */
-display: flex; /* Flexbox 사용 */
-flex-direction: column; /* 세로로 정렬 */
-align-items: center; /* 중앙 정렬 */
-text-align: left; /* 텍스트 가운데 정렬 */
+  flex: 0 1 calc(33.33% - 20px); /* 너비를 3등분하고 간격 조정 */
+  width: 100%; /* 이미지 아이템의 기본 너비 */
+  max-width: 1920px; /* 최대 너비 제한 */
+  margin-bottom: 20px; /* 아래 여백 */
+  border-radius: 8px; /* 이미지 테두리를 둥글게 설정 */
+  overflow: hidden; /* 컨테이너를 벗어난 이미지 부분 숨김 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 박스 그림자 효과 */
+  background-color: #fff; /* 컨테이너 배경색 */
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 세로로 정렬 */
+  align-items: center; /* 컨텐츠를 수직 중앙 정렬 */
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
 }
 
+/* 이미지 스타일링 */
 .image-item img {
-width: 100%; /* 컨테이너에 맞게 이미지 너비 조정 */
-height: 100%; /* 비율 유지 */
-object-fit: cover;
-display: block; /* 여백 제거 */
-transition: transform 0.3s, opacity 0.3s; /* 부드러운 트랜지션 효과 */
+  width: 100%; /* 부모 요소의 너비에 맞게 조정 */
+  height: 100%; /* 부모 요소의 높이에 맞게 조정 */
+  object-fit: cover; /* 이미지 비율을 유지하며 자를 경우 잘라냄 */
+  display: block; /* 이미지 주변 공백 제거 */
+  transition: transform 0.3s, opacity 0.3s; /* 트랜지션 효과 추가 */
 }
 
-/* 호버 시 이미지 확대 효과 */
+/* 호버 효과: 이미지 확대 및 투명도 조정 */
 .image-item:hover img {
-transform: scale(1.05); /* 이미지 확대 */
-opacity: 0.9; /* 투명도 조정 */
+  transform: scale(1.05); /* 이미지 확대 */
+  opacity: 0.9; /* 투명도 낮춤 */
 }
 
+/* 제목 스타일링 */
 .carousel-title {
-  text-align: left;
-  font-size: 20px;
-  margin-top: 10px;
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  font-size: 20px; /* 글씨 크기 */
+  margin-top: 10px; /* 위쪽 여백 */
 }
 
+/* 부제목 스타일링 */
 .carousel-sub-title {
-  text-align: left;
-  font-size: 16px;
-  color: #777;
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  font-size: 16px; /* 글씨 크기 */
+  color: #777; /* 텍스트 색상 */
 }
+
+/* 이미지 하단 텍스트 컨테이너 */
 .image-text {
   padding: 10px; /* 텍스트와 이미지 간 여백 */
-  background-color: #f9f9f9; /* 텍스트 배경색 */
+  background-color: #f9f9f9; /* 배경색 */
   border-bottom: 1px solid #ddd; /* 아래쪽 테두리 */
-  width: 100%; /* 텍스트가 이미지 너비에 맞게 채워지도록 */
+  width: 100%; /* 텍스트가 이미지 너비에 맞게 채워짐 */
 }
 
+/* 이미지 하단 텍스트 스타일 */
 .image-text p {
-  margin: 5px 0; /* 텍스트 간 여백 */
-  font-size: 14px; /* 글씨 크기 */
+  margin: 5px 0; /* 텍스트 간 간격 */
+  font-size: 20px; /* 글씨 크기 */
+  font-weight: bold; /* 글씨 굵기 */
   color: #333; /* 글씨 색상 */
 }
 
+/* 페이지의 부제목 스타일 */
 .sub-title {
-  font-size: 1.2em;
-  color: #757373;
-  text-align: center;
-  margin-bottom: 15px;
+  font-size: 1.2em; /* 글씨 크기 */
+  color: #757373; /* 텍스트 색상 */
+  text-align: center; /* 중앙 정렬 */
+  margin-bottom: 15px; /* 아래 여백 */
 }
 
+/* 페이지의 메인 제목 스타일 */
 .main-title {
-  font-size: 2.5em;
-  color: #040404;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
+  font-size: 2.5em; /* 글씨 크기 */
+  color: #040404; /* 텍스트 색상 */
+  font-weight: bold; /* 글씨 굵기 */
+  text-align: center; /* 중앙 정렬 */
+  margin-bottom: 15px; /* 아래 여백 */
 }
