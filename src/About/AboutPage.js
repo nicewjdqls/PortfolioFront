@@ -4,7 +4,7 @@ import image2 from './recommendation.png';
 import image3 from './army1.jpeg';
 import image4 from './army2.jpeg';
 import image6 from './army4.jpeg';
-import image7 from './advantage.png';
+import image7 from './advantage2.png';
 
 import './AboutPage.css';  // CSS 파일 이름을 수정했습니다.
 
@@ -44,22 +44,6 @@ const certificates = [
     return (
       <div className="image-gallery">
         {army.map((cert, index) => (
-          <div className="image-item" key={index}>
-            <div className="image-text">
-              <p>자격증명: {cert.name}</p>
-              <p>취득일: {cert.date}</p>
-            </div>
-            <img src={cert.image} alt={cert.name} />
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  const MyAdv = () => {
-    return (
-      <div className="image-gallery">
-        {adv.map((cert, index) => (
           <div className="image-item" key={index}>
             <div className="image-text">
               <p>자격증명: {cert.name}</p>
