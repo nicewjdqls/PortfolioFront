@@ -169,3 +169,17 @@ a:hover {
         height: 120px;
     }
 }
+/* 이미지 크기 조정 */
+.experience-icon-img {
+    width: 100%;  /* 너비 */
+    height: auto;  /* 비율에 맞춰 높이 자동 조정 */
+  }
+  
+  /* 이미지가 포함된 div 크기 조정 */
+  .experience-icon {
+    width: 100%; /* 부모 div 크기 */
+    height: auto; /* 부모 div 높이 */
+    overflow: hidden; /* 이미지가 div를 넘지 않도록 */
+    text-align: center; /* 자식 요소(이미지) 가운데 정렬 */
+  }
+  

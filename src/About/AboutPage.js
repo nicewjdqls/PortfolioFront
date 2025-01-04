@@ -3,8 +3,8 @@ import image1 from './certify.png';
 import image2 from './recommendation.png';
 import image3 from './army1.jpeg';
 import image4 from './army2.jpeg';
-import image5 from './army3.jpeg';
 import image6 from './army4.jpeg';
+import image7 from './advantage.png';
 
 import './AboutPage.css';  // CSS 파일 이름을 수정했습니다.
 
@@ -18,6 +18,11 @@ const certificates = [
     { name: "1등 명령하달", date: "2021-02-08", image: image6 },
     { name: "감사 우수", date: "2019-06-28", image: image3 },
   ];
+
+  const adv = [
+    { name: "장점", date: "2022-12-28", image: image7 }
+  ];
+
 
   const MyComponent = () => {
     return (
@@ -50,6 +55,23 @@ const certificates = [
       </div>
     );
   };
+
+  const MyAdv = () => {
+    return (
+      <div className="image-gallery">
+        {adv.map((cert, index) => (
+          <div className="image-item" key={index}>
+            <div className="image-text">
+              <p>자격증명: {cert.name}</p>
+              <p>취득일: {cert.date}</p>
+            </div>
+            <img src={cert.image} alt={cert.name} />
+          </div>
+        ))}
+      </div>
+    );
+  };
+
 
 function App() {
   return (
@@ -258,7 +280,13 @@ function App() {
       </tbody>
     </table>
 
-
+    <section className="about-experience">
+        <h2>□ 나의 강점</h2>
+        <div className="experience-icon">
+          <img src={image7} alt="육군본부 경험" className="experience-icon" />
+          </div>
+ 
+      </section>
 
 
         
