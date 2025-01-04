@@ -1,11 +1,22 @@
 import React from 'react';
 import image1 from './certify.png';
 import image2 from './recommendation.png';
+import image3 from './army1.jpeg';
+import image4 from './army2.jpeg';
+import image5 from './army3.jpeg';
+import image6 from './army4.jpeg';
+
 import './AboutPage.css';  // CSS 파일 이름을 수정했습니다.
 
 const certificates = [
     { name: "수료증", date: "2024-12-27", image: image1 },
-    { name: "우수인재 추천서서", date: "2024-12-27", image: image2 },
+    { name: "우수인재 추천서", date: "2024-12-27", image: image2 },
+  ];
+
+  const army = [
+    { name: "1등 선봉중대", date: "2022-12-28", image: image4 },
+    { name: "1등 명령하달", date: "2021-02-08", image: image6 },
+    { name: "감사 우수", date: "2019-06-28", image: image3 },
   ];
 
   const MyComponent = () => {
@@ -24,6 +35,21 @@ const certificates = [
     );
   };
 
+  const MyArmy = () => {
+    return (
+      <div className="image-gallery">
+        {army.map((cert, index) => (
+          <div className="image-item" key={index}>
+            <div className="image-text">
+              <p>자격증명: {cert.name}</p>
+              <p>취득일: {cert.date}</p>
+            </div>
+            <img src={cert.image} alt={cert.name} />
+          </div>
+        ))}
+      </div>
+    );
+  };
 
 function App() {
   return (
@@ -42,7 +68,34 @@ function App() {
       </header>
 
       <section className="about-education">
-        <h2>□ 교육</h2>
+      <h2>□ 학력</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>기간</th>
+              <th>전공</th>
+              <th>졸업유무</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2019. 06 ~ 2025. 02</td>
+              <td>건국대학교 산업대학원(석사과정) 방위사업학과</td>
+              <td>졸업(4.3/4.5)</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>2011. 06 ~ 2015. 02</td>
+              <td>배재대학교 전자공학과</td>
+              <td>졸업(3.05/4.5)</td>
+            </tr>
+          </tbody>
+        </table>   
+    </section>
+
+      <section className="about-education">
+      <h2>□ 교육</h2>
         <table>
           <thead>
             <tr>
@@ -54,7 +107,7 @@ function App() {
           <tbody>
             <tr>
               <td>KG아이티뱅크</td>
-              <td>2024.06 ~ 2024.12</td>
+              <  td>2024.06 ~ 2024.12</td>
               <td>
                 <ul>
                   <li>리눅스: 웹관리, 데이터관리, 도커를 통한 컨테이너 관리</li>
@@ -71,7 +124,8 @@ function App() {
       <p className="sub-title">Certificate</p>
       <h1 className="main-title">수료증</h1>
       <MyComponent />
-    </main>      </section>
+    </main>      
+    </section>
 
       <section className="about-experience">
         <h2>□ 경력</h2>
@@ -91,6 +145,11 @@ function App() {
             <li>다양한 업무 수행을 통한 문제 해결 능력 향상</li>
           </ul>
         </div>
+        <main className="chargeinfo-page">
+      <p className="sub-title">Certificate</p>
+      <h1 className="main-title">상장</h1>
+      <MyArmy />
+    </main>     
       </section>
 
       <section className="about-projects">
@@ -99,7 +158,7 @@ function App() {
       <thead>
         <tr>
           <th>Stack</th>
-          <th>프로젝트 내 역할 / 기술적 성과</th>
+          <th>기능</th>
           <th>사용 기술 및 내용</th>
         </tr>
       </thead>
