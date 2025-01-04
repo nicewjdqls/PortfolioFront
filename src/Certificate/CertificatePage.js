@@ -7,43 +7,39 @@ import image5 from './computer.png';
 import image6 from './internet.png';
 import './CertificatePage.css';
 
+const certificates = [
+  { name: "리눅스 마스터", date: "2023-10-15", issuer: "한국정보통신진흥협회", image: image1 },
+  { name: "정보처리기사", date: "2022-08-01", issuer: "한국산업인력공단", image: image2 },
+  { name: "네트워크 관리사", date: "2021-11-20", issuer: "한국정보통신협회", image: image3 },
+  { name: "TS 인증", date: "2020-05-30", issuer: "TS 공인기관", image: image4 },
+  { name: "컴퓨터 활용능력", date: "2019-07-10", issuer: "대한상공회의소", image: image5 },
+  { name: "인터넷 정보관리사", date: "2018-12-05", issuer: "한국인터넷진흥원", image: image6 },
+];
 
-// MyComponent 컴포넌트
 const MyComponent = () => {
-    return (
-        <div className="image-gallery">
-            <div className="image-item">
-                <img src={image1} alt="Frame 13" />  
-            </div>
-            <div className="image-item">
-                <img src={image2} alt="Frame 15" />
-            </div>
-            <div className="image-item">
-                <img src={image3} alt="고정석 기간권" />
-            </div>
-            <div className="image-item">
-                <img src={image4} alt="부대시설" />
-            </div>
-            <div className="image-item">
-                <img src={image5} alt="부대시설" />
-            </div>
-            <div className="image-item">
-                <img src={image6} alt="부대시설" />
-            </div>
+  return (
+    <div className="image-gallery">
+      {certificates.map((cert, index) => (
+        <div className="image-item" key={index}>
+          <div className="image-text">
+            <p>자격증명: {cert.name}</p>
+            <p>취득일: {cert.date} / ({cert.issuer})</p>
+          </div>
+          <img src={cert.image} alt={cert.name} />
         </div>
-    );
+      ))}
+    </div>
+  );
+};
+
+function CertificatePage() {
+  return (
+    <main className="chargeinfo-page">
+      <p className="sub-title">Certificate</p>
+      <h1 className="main-title">자격증</h1>
+      <MyComponent />
+    </main>
+  );
 }
 
-
-
-function ChargeInfoPage() {
-    return (
-        <main className="chargeinfo-page">
-            <p className="sub-title">Certificate</p>
-            <h1 className="main-title">자격증</h1>
-            <MyComponent/>
-        </main>
-    )
-}
-
-export default ChargeInfoPage;
+export default CertificatePage;
