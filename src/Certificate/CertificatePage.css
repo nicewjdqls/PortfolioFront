@@ -17,6 +17,7 @@
   
   /* 각 carousel-container 스타일 */
   .carousel-container {
+    display: flex; /* Flexbox 사용 */
     display: inline-block;
     width: 30%; /* 가로 크기 고정 (3개씩 배치) */
     height: 300px; /* 높이 고정 */
@@ -45,12 +46,16 @@
   
   /* 이미지 사이즈 설정 */
   .image-size {
-    width: 70%; /* 이미지가 컨테이너의 가로 크기에 맞게 */
-    height: 100%; /* 이미지가 컨테이너의 높이에 맞게 */
-    object-fit: contain; /* 이미지 비율을 유지하며 크기에 맞게 표시 */
-    object-position: center; /* 이미지가 중앙에 배치되도록 */
-    display: block;
-    margin: auto;
+    width: 100%; /* 이미지 너비 (필요에 따라 조정) */
+    height: auto; /* 비율 유지 */
+    display: flex; /* Flexbox 사용 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    overflow: hidden; /* 이미지가 컨테이너를 넘지 않도록 설정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    background-color: #fff; /* 배경색 */
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 중앙 정렬 */
   }
   
   /* 작은 화면에서 1개씩 표시되도록 하기 위한 반응형 디자인 */

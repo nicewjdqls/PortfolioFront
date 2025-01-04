@@ -25,14 +25,14 @@ const VideoPlayer = () => {
             
           
             <div>
-                <h1 className="process-title">᥸ Process</h1>
+                <h1 className="process-title">᥸ MainProcess</h1>
                 <img src="/process.png" alt="헤더 이미지" className="portfolioPage-image" />
             </div>
             <div className="header-image">
             <h1 className="process-title">᥸ 프로젝트 개요</h1>
             <p>- 클라이언트가 인증을 통해 예약사이트를 사용하도록 하며</p>
                         <p>- 서버관리자는 고객정보, 시스템관리, 데이터 관리 등을 통해 유지보수 할수 있어야 한다.</p>
-                        <h1 className="process-title">᥸ 담당업무무</h1>
+                        <h1 className="process-title">᥸ 담당업무</h1>
                         <p>- 팀장(PM)</p>
                         <p>- 백엔드 구성 및 통합테스트</p>
                 <p>- 프로젝트 전체 관리(기획, PPT, 보고서 작성[총괄])</p>

@@ -12,6 +12,10 @@ const MainPage = () => {
         // /blog.png가 있는 카드 클릭 시 리다이렉션
         window.open('https://blog.naver.com/nicewjdqls', '_blank');
     };
+    const handleGitClick = () => {
+        // /git가 있는 카드 클릭 시 리다이렉션
+        window.open('https://github.com/nicewjdqls', '_blank');
+    };
 
     useEffect(() => {
         const sketch = (p) => {
@@ -194,7 +198,7 @@ const MainPage = () => {
                     <div className="card" onClick={handleBlogClick}>
                         <img src="/blog.png" alt="블로그" target="_blank"/>
                     </div>
-                    <div className="card" onClick={handleClick}>
+                    <div className="card" onClick={handleGitClick}>
                         <img src="/git.png" alt="백엔드 엔지니어" />
                     </div>
                     </div>
