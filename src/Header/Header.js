@@ -19,7 +19,7 @@ const Header = () => {
                     </Link>
                     <li><Link to="/" className="btn btn-header">홈</Link></li>
                     <li><Link to="/about" className="btn btn-header">소개</Link></li>
-                    <li><Link to="/sidebar" className="btn btn-header">기술</Link></li>
+                    <li><Link to="/skills" className="btn btn-header">기술</Link></li>
                     <li><Link to="/portfolio" className="btn btn-header">작품</Link></li>
                     <li><Link to="/certificate" className="btn btn-header">자격증</Link></li>
                     <li><Link to="/test" className="btn btn-header">방명록(•‿•)</Link></li>

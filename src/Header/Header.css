@@ -130,3 +130,6 @@
     border: 2px solid #333;  /* 클릭 시 테두리 색 */
   }
   
+  .logo-container{
+    margin-top: 10px;
+  }
