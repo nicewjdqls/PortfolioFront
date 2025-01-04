@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './MainPage.css';
 
 const MainPage = () => {
+    const navigate = useNavigate();
+
     const handleClick = () => {
-        alert("더 많은 정보를 확인하세요!");
+        alert("이력서를 보여드립니다.");
+        navigate('/about'); 
     };
 
     const handleBlogClick = () => {

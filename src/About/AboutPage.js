@@ -1,5 +1,29 @@
 import React from 'react';
+import image1 from './certify.png';
+import image2 from './recommendation.png';
 import './AboutPage.css';  // CSS 파일 이름을 수정했습니다.
+
+const certificates = [
+    { name: "수료증", date: "2024-12-27", image: image1 },
+    { name: "우수인재 추천서서", date: "2024-12-27", image: image2 },
+  ];
+
+  const MyComponent = () => {
+    return (
+      <div className="image-gallery">
+        {certificates.map((cert, index) => (
+          <div className="image-item" key={index}>
+            <div className="image-text">
+              <p>자격증명: {cert.name}</p>
+              <p>취득일: {cert.date}</p>
+            </div>
+            <img src={cert.image} alt={cert.name} />
+          </div>
+        ))}
+      </div>
+    );
+  };
+
 
 function App() {
   return (
@@ -43,7 +67,11 @@ function App() {
             </tr>
           </tbody>
         </table>
-      </section>
+    <main className="chargeinfo-page">
+      <p className="sub-title">Certificate</p>
+      <h1 className="main-title">수료증</h1>
+      <MyComponent />
+    </main>      </section>
 
       <section className="about-experience">
         <h2>□ 경력</h2>
@@ -67,21 +95,114 @@ function App() {
 
       <section className="about-projects">
         <h2>□ 프로젝트 경험</h2>
-        <div className="about-project-item">
-          <h3>Node.js 백엔드 구축</h3>
-          <p><strong>사용 기술:</strong> Node.js, Linux, Docker, AWS, MySQL</p>
-          <p>서버와 WAS를 구축하고, Docker를 이용하여 컨테이너 관리 및 AWS에 3-tier 아키텍처로 배포.</p>
-        </div>
-        <div className="about-project-item">
-          <h3>리액트 프론트엔드 개발</h3>
-          <p><strong>사용 기술:</strong> React, DOM, CSS</p>
-          <p>리액트를 이용하여 사용자 인터페이스를 구축하고 DOM을 효율적으로 구성.</p>
-        </div>
-        <div className="about-project-item">
-          <h3>데이터베이스 관리</h3>
-          <p><strong>사용 기술:</strong> MySQL, SQL</p>
-          <p>데이터베이스 정규화 및 사전 명세서 작성, 다이어그램을 통한 데이터 관리.</p>
-        </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Stack</th>
+          <th>프로젝트 내 역할 / 기술적 성과</th>
+          <th>사용 기술 및 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>React</td>
+          <td>프론트엔드 개발 - 사용자 인터페이스 최적화</td>
+          <td>
+            <ul>
+              <li><strong>React:</strong> 다소스튜디오 카페의 메인 UI 개발에 주로 사용. 컴포넌트 기반 구조로 개발하여 유연성과 확장성을 유지하며 코드 재사용성을 높입니다. 상태 관리 및 라이프사이클 메서드를 활용하여 사용자 경험을 동적으로 제공합니다.</li>
+              <li><strong>React Router:</strong> 페이지 간 원활한 이동과 라우팅을 지원하여 사용자가 필요한 정보를 쉽게 찾을 수 있게 해줍니다.</li>
+              <li><strong>React Hooks:</strong> useState, useEffect와 같은 Hooks를 활용하여 컴포넌트의 상태 및 사이드 이펙트를 효율적으로 관리하고 코드 가독성과 유지보수성을 향상시킵니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Node.js</td>
+          <td>백엔드 서버 - 서버 및 API 기반 구축</td>
+          <td>
+            <ul>
+              <li><strong>Node.js:</strong> Express.js와 함께 RESTful API 설계에 사용되며, 비동기 처리를 통해 데이터 처리 효율성을 높입니다.</li>
+              <li><strong>JWT:</strong> JSON Web Token을 통해 사용자 인증 및 세션 관리를 강화해 보안성을 높입니다.</li>
+              <li><strong>Socket.io:</strong> 실시간 채팅 기능을 구현하여 사용자 간의 실시간 소통이 가능하도록 지원합니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>MySQL</td>
+          <td>데이터베이스 관리 - 데이터베이스 설계 및 성능 최적화</td>
+          <td>
+            <ul>
+              <li><strong>MySQL:</strong> 관계형 데이터베이스로, 데이터 구조 설계 및 관리에 최적화되어 있습니다.</li>
+              <li><strong>SQL 쿼리 최적화:</strong> 대량 데이터를 효율적으로 처리하기 위해 인덱스를 사용하여 검색 성능을 크게 향상시킵니다.</li>
+              <li><strong>ORM 사용 (Sequelize):</strong> ORM을 통해 데이터베이스와의 상호작용을 직관적으로 처리하며 코드 유지보수성을 높입니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Linux</td>
+          <td>서버 운영 관리 - 서버 환경 설정 및 관리 효율성 증대</td>
+          <td>
+            <ul>
+              <li><strong>Linux:</strong> 서버 배포 및 유지관리에 리눅스를 활용하여 파일 시스템 구조를 이해하고 서버 성능을 최대화합니다.</li>
+              <li><strong>Shell Script:</strong> 자동화 작업을 위해 Bash 스크립트를 활용, 반복 작업의 효율성을 증가시킵니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Docker</td>
+          <td>컨테이너화 및 배포 - 컨테이너화 및 서비스 배포 일원화</td>
+          <td>
+            <ul>
+              <li><strong>Docker:</strong> 서비스 환경의 일관성을 유지하며, 다양한 환경에서도 동일한 성능을 보장합니다.</li>
+              <li><strong>Docker Compose:</strong> 여러 서비스 간의 의존성을 관리하여 동시에 설정하고 관리할 수 있습니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>AWS</td>
+          <td>클라우드 배포 및 관리 - 확장성 높은 서버 관리 및 서비스 제공</td>
+          <td>
+            <ul>
+              <li><strong>Amazon S3 (정적 웹 호스팅):</strong> S3 버킷을 생성하여 정적 웹 페이지를 호스팅합니다. 퍼블릭 액세스를 설정하고 파일을 업로드하여 웹사이트를 구성합니다.</li>
+              <li><strong>Amazon API Gateway (API 관리):</strong> HTTP API를 생성하여 외부 요청을 처리하며, CloudFront와 연계하여 API 요청을 처리하고 Lambda 함수와 통합하여 서버리스 아키텍처를 제공합니다.</li>
+              <li><strong>Amazon RDS (데이터 관리):</strong> 안정적인 데이터 관리 및 성능 최적화를 통해 데이터를 안전하게 운영합니다. 자동 백업 및 복원 기능을 활용하여 MySQL 데이터베이스를 설정합니다.</li>
+              <li><strong>AWS Lambda (서버리스 기능 구현):</strong> 서버리스 아키텍처를 통해 이벤트 기반으로 비즈니스 로직을 자동으로 처리합니다.</li>
+              <li><strong>GitHub Actions (CI/CD):</strong> 소스 코드 변경 시 자동으로 배포되도록 CI/CD 파이프라인을 구축합니다. GitHub에서 자동화된 워크플로우를 통해 코드가 푸시될 때마다 배포합니다.</li>
+              <li><strong>NGINX (로드밸런싱 및 웹 관리):</strong> 웹 트래픽을 효율적으로 분산 처리하고 로드밸런서를 설정하여 여러 인스턴스에 트래픽을 분산합니다.</li>
+              <li><strong>Prometheus와 Grafana (모니터링 및 성능 관리):</strong> 서버 및 애플리케이션 성능을 모니터링하고, Prometheus와 Grafana를 활용하여 메트릭스를 수집하고 시각화합니다.</li>
+              <li><strong>AWS IAM (보안 관리):</strong> 리소스에 대한 접근 권한을 설정하여 보안을 강화합니다.</li>
+              <li><strong>Amazon CloudFront (콘텐츠 배포):</strong> 글로벌 엣지 서버를 사용하여 콘텐츠를 빠르게 제공하며, S3와 연결하여 캐시된 콘텐츠를 제공하고 데이터 전송 비용을 절감합니다. HTTPS를 지원하여 데이터 전송을 암호화할 수 있습니다.</li>
+              <li><strong>AWS WAF (웹 애플리케이션 방화벽):</strong> 웹 애플리케이션에 대한 공격을 방어하고 보안을 강화합니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Java</td>
+          <td>백엔드 서비스 추가 - 안정적인 서버 로직 구현</td>
+          <td>
+            <ul>
+              <li><strong>Java:</strong> 일부 백엔드 서비스에 사용되며, Spring Boot 프레임워크를 통해 RESTful API를 간편하게 구축합니다.</li>
+              <li><strong>Java의 멀티스레딩 기능:</strong> 강력한 멀티스레딩 기능을 통해 성능 최적화를 도모합니다.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>CI/CD</td>
+          <td>자동화된 빌드 및 배포 프로세스 구축</td>
+          <td>
+            <ul>
+              <li><strong>GitHub Actions:</strong> 코드를 GitHub에 푸시할 때마다 자동으로 빌드하고 S3에 배포하는 프로세스를 설정했습니다.</li>
+              <li><strong>AWS S3:</strong> 빌드된 애플리케이션 파일을 저장하고 관리합니다. AWS IAM Access Key를 사용하여 S3 버킷에 대한 접근 및 권한을 설정했습니다.</li>
+              <li><strong>YAML 파일 구성:</strong> .github/workflows에 YAML 파일을 생성하여 메인 브랜치에 코드 변경이 발생할 때 트리거되는 워크플로우를 설정합니다.</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+        
       </section>
 
       <footer className="about-footer">
