@@ -1,0 +1,103 @@
+.logo1 {
+    width: 150px;
+    height: 50px;
+    background-repeat :no-repeat;
+    background-size: contain;
+    position: relative;
+    display : inline-block;
+  }
+  
+  .login-page {
+    padding: 10% 5% 1% 5%;
+    font-family: "Pretendard SemiBold";
+   }
+  
+  .signup-page {
+    padding: 10% 5% 1% 5%;
+    font-family: "Pretendard SemiBold";
+   }
+
+  .login-logo {
+    width: 180px;
+    height: 60px;
+    background-repeat :no-repeat;
+    background-size: contain;
+    position: relative;
+    margin: auto;
+    display : block;
+    margin-bottom: 10%;
+  }
+
+  /* primary button */
+.p-button {
+    background-color: #56a3d3;
+    border-bottom-color: #56a3d3;
+    color: #ffffff;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 3%;
+    border-radius: '10px'; 
+    border-width: '2px';
+  }
+  
+  .p-button:hover {
+    background-color: #4c87b2;
+    color: #000000;
+  }
+  
+  /* secondary button */
+  .s-button {
+    background-color: #ffffff;
+    border-bottom-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 3%;
+    border-radius: '10px'; 
+    border-width: '2px';
+  }
+  
+  .s-button:hover {
+    background-color: #bbbbbb;
+    color: #ffffff;
+  }
+  
+  .side-bar {
+    background: rgba(173, 181, 189, 0.50);
+    backdrop-filter: blur(2.800000190734863px);
+  }
+  
+  .modal-body {
+    height: 200px;
+    text-align: center;
+    padding: 10% 1% 10% 1%;
+  }
+  
+  .date-form {
+    z-index: 9999 !important;
+  }
+  
+  .date-picker {
+    display: flex;
+    height: 58px;
+    width: 330px;
+    border-radius: 6px;
+    margin-bottom: 4%;
+    padding: 3%;
+    border: 0px;  
+  }
+  
+  .p-button-sm {
+    background-color: #00AF50;
+    border-bottom-color: #00AF50;
+    border: 0px;
+    color: #ffffff;
+    width: 30%;
+    height: 10%;
+    margin-bottom: 3%;
+  }
+  
+  .p-button-sm:hover {
+    background-color: #9ed4b6;
+    color: #000000;
+  }
