@@ -64,11 +64,25 @@ h2 {
 }
 
 /* 경험 항목 */
-.about-experience-item, .about-project-item {
+.about-experience-item {
     margin-bottom: 20px;
     margin-left: 20px;
     text-align: left;
 }
+
+.about-project-item {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-align: left; 
+}
+
+.table-project-item {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-align: left; 
+}
+
+
 
 /* 경험 내용 */
 .about-experience-item h3, .about-project-item h3 {
@@ -183,3 +197,10 @@ a:hover {
     text-align: center; /* 자식 요소(이미지) 가운데 정렬 */
   }
   
+  .subtitle{
+    font-size: 1.4em; /* 글씨 크기 */
+    color: #040404; /* 텍스트 색상 */
+    font-weight: bold; /* 글씨 굵기 */
+    text-align: left; /* 중앙 정렬 */
+    margin-bottom: 15px; /* 아래 여백 */
+  }

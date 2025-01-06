@@ -9,7 +9,6 @@ const Header = () => {
             <div className="header-image">
                 <img src="/ban.png" alt="헤더 이미지" className="header-banner" />
                 <div className="header-title">
-                    {/* 헤더 타이틀이 필요하다면 여기에 내용 추가 */}
                 </div>
             </div>
             <nav className="nav-bar">
@@ -28,11 +27,10 @@ const Header = () => {
 
                     <li>
                         <Link to="/sidebar">
-                            {/* CoreUI의 CButton 사용 */}
                             <CButton 
-                                color="primary" // 버튼 색상 설정
-                                size="lg"       // 버튼 크기 설정
-                                className="mb-3 p-1 px-3">
+                                color="primary"
+                                size="lg"     
+                                className="logo-container">
                                 로그인
                             </CButton>
                         </Link>

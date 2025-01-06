@@ -1,4 +1,78 @@
-/* 헤더 스타일 */
+/* 로고 스타일 */
+.logo1 {
+    width: clamp(120px, 15vw, 200px);  /* 최소 120px, 최대 200px */
+    height: clamp(40px, 6vw, 70px);    /* 최소 40px, 최대 70px */
+    background-image: url('/public/koo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: inline-block;
+    border: none;
+}
+
+/* 로고와 버튼 간격을 확실히 설정 */
+.logo-container {
+    margin-top: 20px;  /* 로고와 다른 항목들 간의 간격을 조정 */
+    display: inline-block;  /* inline-block을 사용하여 레이아웃에 영향을 덜 주도록 */
+}
+
+/* 네비게이션 항목 스타일 */
+.nav-bar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 네비게이션 링크 스타일 */
+.nav-bar li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px; /* 고정된 폰트 크기 */
+    padding: 12px 18px; /* 고정된 패딩 */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    border: 2px solid transparent;
+}
+
+/* CButton 스타일 조정 */
+.nav-bar li .btn-header:hover {
+    background-color: transparent;
+    color: #188a6d;
+    border-color: #02741c;
+}
+
+/* 로그인 버튼 스타일 조정 */
+.nav-bar li .btn-header {
+    margin: 0 5px;  /* 버튼 간 간격 설정 */
+    padding: 12px 18px;
+}
+
+/* 로그인 버튼 스타일 (CoreUI) */
+.btn-header .btn {
+    padding: 8px 20px;
+    font-size: clamp(16px, 1vw, 18px); /* 버튼 사이즈 조정 */
+}
+
+/* 네비게이션 바 스타일 */
+.nav-bar {
+    position: fixed; /* 항상 상단에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 브라우저 너비에 꽉 채움 */
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #fff;
+    z-index: 500;
+}
+.header-image {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+}
 .header {
     position: relative;
     text-align: center;
@@ -24,112 +98,3 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-
-/* 로고 스타일 */
-.logo1 {
-    width: clamp(120px, 15vw, 200px);  /* 최소 120px, 최대 200px */
-    height: clamp(40px, 6vw, 70px);    /* 최소 40px, 최대 70px */
-    background-image: url('/public/koo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: relative;
-    display: inline-block;
-    border: none;
-}
-
-/* 네비게이션 항목 스타일 */
-.nav-bar ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    justify-content: space-around;
-    align-items: center;
-}
-
-/* 네비게이션 바 스타일 */
-.nav-bar {
-    position: fixed; /* 항상 상단에 고정 */
-    top: 0;
-    left: 0;
-    width: 100%; /* 브라우저 너비에 꽉 채움 */
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #fff;
-    z-index: 1000;
-}
-/* 각 리스트 항목 */
-
-.nav-bar li {
-    margin: 0 15px;
-    font-size: clamp(30px, 2vw, 40px); /* 최소 12px, 최대 16px */
-    border: 2px solid transparent;
-}
-
-/* 네비게이션 링크 스타일 */
-.nav-bar li a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-size: clamp(16px, 2vw, 20px); /* 최소 16px, 최대 20px */
-    padding: 12px 18px; /* 고정된 패딩 */
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    border: 2px solid transparent;
-}
-
-/* 네비게이션 링크 hover 스타일 */
-.nav-bar li a:hover {
-    background-color: transparent;
-    color: #1f8c0e;
-    border-color: #1f8c0e;
-}
-
-/* 네비게이션 링크 active 스타일 */
-.nav-bar li a:active {
-    background-color: #ffffff;
-}
-
-/* 버튼 스타일 */
-.btn-header {
-    text-decoration: none;
-    color: #fff;
-    font-size: clamp(24px, 4vw, 40px); /* 최소 24px, 최대 40px */
-    font-weight: bold;
-    padding: 10px 18px; /* 고정된 패딩 */
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-header:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-/* 로그인 버튼 기본 스타일 */
-.p-button {
-    border: 2px solid transparent;  /* 기본 테두리는 투명 */
-    border-radius: 8px;  /* 모서리 둥글게 */
-    padding: 8px 16px;  /* 버튼 안쪽 여백 */
-    background-color: white;  /* 배경색 흰색 */
-    color: black;  /* 텍스트 색상 */
-    font-size: 16px;  /* 폰트 크기 */
-    transition: all 0.3s ease;  /* 부드러운 효과 */
-  }
-  
-  /* 마우스를 올렸을 때 테두리만 보이도록 */
-  .p-button:hover {
-    border: 2px solid #333;  /* 테두리 색상을 어두운 색으로 */
-    background-color: transparent;  /* 배경색을 투명하게 */
-    color: #333;  /* 텍스트 색상도 어두운 색으로 */
-  }
-  
-  /* 마우스를 클릭했을 때(Active 상태) 버튼 효과 */
-  .p-button:active {
-    background-color: #f0f0f0;  /* 클릭 시 배경색 */
-    border: 2px solid #333;  /* 클릭 시 테두리 색 */
-  }
-  
-  .logo-container{
-    margin-top: 10px;
-  }
