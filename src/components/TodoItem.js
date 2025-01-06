@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { CCol, CRow } from "@coreui/react";  // @coreui/react에서 CCol, CRow를 임포트
 
 const TodoItem = ({ item, delTask, putTask }) => {
   const itemStyle = {
@@ -11,16 +11,17 @@ const TodoItem = ({ item, delTask, putTask }) => {
   };
 
   return (
-    <Row>
-      <Col xs={12}>
+    <CRow>
+      <CCol xs={12}>
         <div className="todo-item" style={itemStyle}>
           <div className="todo-content">{item.task}</div>
           <div>
-            <button className="button-delete" onClick={() => delTask(item._id)}>삭제</button>
+            {/* CoreUI 스타일의 버튼 사용 */}
+            <button className="btn btn-danger" onClick={() => delTask(item._id)}>삭제</button>
           </div>
         </div>
-      </Col>
-    </Row>
+      </CCol>
+    </CRow>
   );
 };
 

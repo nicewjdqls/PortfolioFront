@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { CButton } from '@coreui/react';  // CoreUI의 CButton을 사용
 import './MainPage.css';
 
 const MainPage = () => {
@@ -44,7 +45,13 @@ const MainPage = () => {
                             <span className="tag">#취미는 바이올린</span>
                             <span className="tag">#특기는 농구</span>
                         </div>
-                        <button className="click-button" onClick={handleClick}>CLICK HERE!</button>
+                        <CButton 
+                            color="primary" 
+                            className="click-button" 
+                            onClick={handleClick}
+                        >
+                            CLICK HERE!
+                        </CButton>
                     </div>
                 </div>
             </div>
@@ -55,10 +62,10 @@ const MainPage = () => {
                     <img src="/daslogo.png" alt="백엔드 엔지니어" />
                 </Link>
                 <div className="card" onClick={handleBlogClick}>
-                    <img src="/blog.png" alt="블로그" target="_blank"/>
+                    <img src="/blog.png" alt="블로그" />
                 </div>
                 <div className="card" onClick={handleGitClick}>
-                    <img src="/git.png" alt="백엔드 엔지니어" />
+                    <img src="/git.png" alt="GitHub" />
                 </div>
             </div>
 

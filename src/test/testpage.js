@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import TodoBoard from "../components/TodoBoard";  // TodoBoard 컴포넌트 import
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
+import { CRow, CCol, CContainer } from '@coreui/react';  // CoreUI에서 Row, Col, Container 가져오기
+import { CButton } from '@coreui/react';  // CoreUI에서 CButton 가져오기
 
 const AboutPage = () => {
   const [todoList, setTodoList] = useState([
@@ -34,9 +33,9 @@ const AboutPage = () => {
   };
 
   return (
-    <Container>
-      <Row className="add-item-row">
-        <Col xs={12} sm={10}>
+    <CContainer>
+      <CRow className="add-item-row">
+        <CCol xs={12} sm={10}>
           <input
             type="text"
             placeholder="방명록을 작성하세요"
@@ -44,20 +43,20 @@ const AboutPage = () => {
             className="input-box"
             value={todoValue}
           />
-        </Col>
-        <Col xs={12} sm={2}>
-          <button onClick={addTodo} className="button-add">
+        </CCol>
+        <CCol xs={12} sm={2}>
+          <CButton onClick={addTodo} className="button-add">
             추가
-          </button>
-        </Col>
-      </Row>
+          </CButton>
+        </CCol>
+      </CRow>
 
       <TodoBoard
         todoList={todoList}
         deleteItem={deleteItem}
         toggleComplete={toggleComplete}
       />
-    </Container>
+    </CContainer>
   );
 };
 

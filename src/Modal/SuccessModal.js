@@ -1,24 +1,24 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { CModal, CModalBody, CModalFooter, CButton } from '@coreui/react';
 import { PiSealCheckFill } from 'react-icons/pi';
 
 const SuccessModal = (props) => {
     return (
-        <Modal show={props.show} onHide={props.handleClose} centered>
-            <Modal.Body className="modal-body">
+        <CModal show={props.show} onClose={props.handleClose} centered>
+            <CModalBody className="modal-body">
                 <PiSealCheckFill size={70} />
                 <p>{props.text}</p>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button 
+            </CModalBody>
+            <CModalFooter>
+                <CButton 
                     className="p-button" 
-                    variant="mb-3 p-1 px-3" 
+                    color="primary" 
                     onClick={props.handleClose}
                 >
                     확인
-                </Button>
-            </Modal.Footer>
-        </Modal>
+                </CButton>
+            </CModalFooter>
+        </CModal>
     );
 };
 

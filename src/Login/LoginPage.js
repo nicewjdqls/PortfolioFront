@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import api from '../api/api';
-import { Button } from 'react-bootstrap';
+import { CButton } from '@coreui/react';  // CButton import
 import { CForm, CFormInput, CFormLabel, CFormFloating } from '@coreui/react';
 import loginButton from './Sign in Naver.png';
 
@@ -133,15 +133,15 @@ function LoginPage(props) {
             </CForm>
 
             {/* 로그인 버튼 */}
-            <Button
+            <CButton
                 onClick={conTest}
                 className="p-button"
                 variant="mb-3 p-1 px-3">
                 로그인
-            </Button>
+            </CButton>
 
             {/* 회원가입 버튼 */}
-            <Button
+            <CButton
                 onClick={(e) => {
                     e.preventDefault();
                     props.onChangePage("signUp");
@@ -149,11 +149,11 @@ function LoginPage(props) {
                 variant="mb-3 p-1 px-3"
                 className="s-button">
                 회원가입
-            </Button>
+            </CButton>
 
             {/* 네이버 로그인 버튼 */}
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', width: '100%', maxWidth: '800px' }}>
-                <Button
+                <CButton
                     id="naverLoginButton"
                     variant="mb-3 mt-3"
                     style={{
@@ -172,7 +172,7 @@ function LoginPage(props) {
                         src={loginButton}
                         alt="네이버 로그인 이미지"
                     />
-                </Button>
+                </CButton>
             </div>
 
         </main>

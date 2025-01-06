@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import React from "react";
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '@coreui/coreui/dist/css/coreui.min.css';  // CoreUI 스타일로 변경
 import Header from "./Header/Header";
 import MainPage from "./Main/MainPage";
 import CertificatePage from "./Certificate/CertificatePage";
@@ -41,7 +41,6 @@ const App = () => {
             <Route path="/pdf1" element={<Pdf1 />} /> 
             <Route path="/pdf2" element={<Pdf2 />} /> 
             <Route path="/pdf3" element={<Pdf3 />} /> 
-
           </Routes>
         </main>
 
