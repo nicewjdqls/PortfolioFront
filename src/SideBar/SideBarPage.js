@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom'; // react-router-dom을 사용하여 URL 경로에 따라 사이드바 열기
-import { COffcanvas, COffcanvasBody } from '@coreui/react'; // COffcanvas와 COffcanvasBody를 coreui에서 가져옵니다.
+import { COffcanvas, COffcanvasBody, CButton } from '@coreui/react'; // CButton을 coreui에서 가져옵니다.
 import './SideBarPage.css'; 
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../SignUp/SignUpPage";
-import Button from 'react-bootstrap/Button';
 
 const SideBarPage = (props) => {
   const [visible, setVisible] = useState(false); // 사이드바 열기/닫기 상태 관리
@@ -34,15 +33,15 @@ const SideBarPage = (props) => {
   return (
     <>
       {/* 로그인 버튼 */}
-      <Button
+      <CButton
         onClick={() => setVisible(true)}
-        variant="outline-dark m-2 p-0 px-2"
-        size="sm" // size 값 수정
-        className="b-button"
+        color="dark" // CoreUI의 color 속성 사용
+        size="sm" // 사이즈 변경
+        className="m-2 p-0 px-2"
         style={{ borderRadius: '8px', borderWidth: '2px' }}
       >
         로그인
-      </Button>
+      </CButton>
 
       {/* 사이드바 컴포넌트 */}
       <COffcanvas
