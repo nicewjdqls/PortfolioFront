@@ -95,9 +95,6 @@ function SignUpPage(props) {
         else if (checkedId === false) {
             alert('아이디 중복체크를 해주세요');
         }
-        else if (checkedPhone === false) {
-            alert('휴대폰 인증을 해주세요')
-        }
         else {
             reqSignUp();
         }        
