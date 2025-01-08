@@ -10,6 +10,7 @@ import Portfolio from "./Portfolio/PortfolioPage";
 import SideBarPage from "./SideBar/SideBarPage";  // 사이드바 컴포넌트 가져오기
 import About from "./About/AboutPage";
 import Skills from "./Skills/SkillsPage";
+import Profile from "./ProfileBar/ProfileBarPage";
 import Pdf1 from "./Pdf/PdfPage1";
 import Pdf2 from "./Pdf/PdfPage2";
 import Pdf3 from "./Pdf/PdfPage3";

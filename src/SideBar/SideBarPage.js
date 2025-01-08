@@ -5,7 +5,7 @@ import './SideBarPage.css';
 import LoginPage from "../Login/LoginPage";
 import SignUpPage from "../SignUp/SignUpPage";
 
-const SideBarPage = ({ user, setUser }) => {  // setUser를 props로 받음
+const SideBarPage = ({ user, setUser }) => {  
   const [visible, setVisible] = useState(false); 
   const [renderPage, setRenderPage] = useState("login");
 
@@ -28,15 +28,7 @@ const SideBarPage = ({ user, setUser }) => {  // setUser를 props로 받음
 
   return (
     <>
-      <CButton
-        onClick={() => setVisible(true)}
-        color="dark" 
-        size="sm" 
-        className="m-2 p-0 px-2"
-        style={{ borderRadius: '8px', borderWidth: '2px' }}
-      >
-        로그인
-      </CButton>
+
 
       <COffcanvas
         className="side-bar"

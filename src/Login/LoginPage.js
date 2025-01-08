@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 import api from "../api/api";
 import { CButton, CForm, CFormInput, CFormLabel, CFormFloating } from "@coreui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";  // useNavigate 훅을 임포트
 import loginButton from "./Sign in Naver.png";
 
-const LoginPage = ({ onChangePage, onLogin }) => {  // onLogin 받기
+const LoginPage = ({ onLogin, onChangePage }) => {  
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [hasRedirected, setHasRedirected] = useState(false); // 리다이렉션 여부를 관리하는 상태
+  const navigate = useNavigate(); // useNavigate 사용하여 페이지 이동
 
   useEffect(() => {
     const storedToken = sessionStorage.getItem("token");
-    console.log("Stored Token:", storedToken);
-
-    if (storedToken) {
-      navigate("/"); // 이미 로그인된 상태라면 메인 페이지로 리다이렉트
+    if (storedToken && !hasRedirected) {
+      navigate("/"); // 로그인된 상태라면 메인 페이지로 리다이렉트
+      setHasRedirected(true); // 리다이렉션이 한 번 발생했음을 기록
     }
-  }, [navigate]);
+  }, [navigate, hasRedirected]); // hasRedirected 상태를 의존성 배열에 추가
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -41,6 +41,7 @@ const LoginPage = ({ onChangePage, onLogin }) => {  // onLogin 받기
         api.defaults.headers["authorization"] = "Bearer " + response.data.token;
 
         setError(""); // 로그인 성공 시 에러 메시지 초기화
+        setHasRedirected(true); // 리다이렉션을 했다고 기록
         navigate("/"); // 로그인 후 메인 페이지로 이동
       } else {
         console.log("로그인 실패 메시지:", response.data.message);
@@ -56,6 +57,10 @@ const LoginPage = ({ onChangePage, onLogin }) => {  // onLogin 받기
     if (event.key === "Enter") {
       handleLogin(event);
     }
+  };
+
+  const handleSignUpClick = () => {
+    onChangePage('signUp');  // 회원가입 페이지로 이동
   };
 
   return (
@@ -92,6 +97,15 @@ const LoginPage = ({ onChangePage, onLogin }) => {  // onLogin 받기
 
         <CButton type="submit" color="primary" className="mb-3 w-100">
           로그인
+        </CButton>
+        
+        <CButton 
+          type="button" 
+          color="secondary" 
+          className="mb-3 w-100"
+          onClick={handleSignUpClick}  // 회원가입 버튼 클릭 시
+        >
+          회원가입
         </CButton>
       </CForm>
     </main>

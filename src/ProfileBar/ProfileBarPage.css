@@ -1,0 +1,12 @@
+.profile-badge {
+    width: 35px;
+    height: 35px;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 15%;
+  }
+  .profile-bar {
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 11%;
+  }
+  

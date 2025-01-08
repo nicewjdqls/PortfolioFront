@@ -1,12 +1,12 @@
 import React from 'react';
 import { CModal, CModalBody, CModalFooter, CButton } from '@coreui/react';
-import { PiSealCheckFill } from 'react-icons/pi';
+import { FiCheckCircle } from 'react-icons/fi';  // Feather 아이콘 사용
 
 const SuccessModal = (props) => {
     return (
         <CModal show={props.show} onClose={props.handleClose} centered>
             <CModalBody className="modal-body">
-                <PiSealCheckFill size={70} />
+                <FiCheckCircle size={70} />  {/* 다른 아이콘으로 변경 */}
                 <p>{props.text}</p>
             </CModalBody>
             <CModalFooter>

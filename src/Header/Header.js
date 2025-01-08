@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; 
 import { CButton } from '@coreui/react'; // CoreUI의 CButton 사용
+import ProfileBarPage from '../ProfileBar/ProfileBarPage';
 
 const Header = () => {
+    const isLoggedIn = sessionStorage.getItem("token"); // 예시로 토큰을 확인합니다.
+
     return (
         <header className="header">
             <div className="header-image">
@@ -26,6 +29,13 @@ const Header = () => {
                     <li><Link to="/test" className="btn btn-header">방명록(•‿•)</Link></li>
 
                     <li>
+                        {isLoggedIn ? (
+                            <ProfileBarPage onLogout = {()=>{
+                                sessionStorage.removeItem("token");
+                                window.location.href ="/";
+                            }} /> 
+                        ) :
+                        (
                         <Link to="/sidebar">
                             <CButton 
                                 color="primary"
@@ -34,6 +44,7 @@ const Header = () => {
                                 로그인
                             </CButton>
                         </Link>
+                        )}
                     </li>
                 </ul>
             </nav>

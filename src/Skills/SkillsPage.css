@@ -17,7 +17,7 @@
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: bold;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -46,7 +46,8 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   line-height: 1.6;
-  font-size: 1em;
+  font-size: 1.5em;
+  text-align: left;
 }
 
 .accordion-content p {
