@@ -59,14 +59,23 @@ const TodoPage = ({ user, setUser }) => {
   
   const deleteItem = async (id) => {
     try {
-      const response = await api.delete(`/tasks/${id}`);
-      if (response.status === 200) {
-        getTasks();
-      }
+      const response = await api.delete(`/tasks/${id}`, {
+        data: { userId: userId } // 로그인된 userId와 함께 전달
+    });
+        
+        if (response.status === 200) {
+            getTasks(); // 삭제 후 목록 새로고침
+        }
     } catch (error) {
-      console.log("error", error);
+        if (error.response && error.response.data && error.response.data.message) {
+            // 서버에서 보낸 메시지를 alert 창으로 표시
+            alert(error.response.data.message);
+        } else {
+            alert("삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
+            console.error("error", error);
+        }
     }
-  };
+};
 
   const toggleComplete = async (id) => {
     try {
