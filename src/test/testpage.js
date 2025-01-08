@@ -36,7 +36,10 @@ const TodoPage = ({ user, setUser }) => {
         console.error("토큰 디코딩 오류 :", error);
       }
     } else {
-      console.log("토큰이 존재하지 않습니다");
+      // 비회원일 경우 userId와 userName을 'none'과 '비회원'으로 설정
+      console.log("토큰이 존재하지 않습니다. 비회원 사용자로 설정합니다.");
+      setUserName('비회원');
+      setUserId('none');
     }
   }, []);
 

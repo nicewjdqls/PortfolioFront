@@ -94,15 +94,24 @@ body{
 
 
 .todo-item{
-  border: 1px solid lightblue;
-  background-color: white;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(230, 244, 247);
   display: flex;
+  
   justify-content: space-between;
   align-items: center;
 }
-.todo-content{
-  padding:1em
+.todo-content {
+  font-size: 16px;
 }
+
+.todo-writer {
+  text-align: right; /* 오른쪽 정렬 */
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
+
 .add-item-row{
   margin-top:50px !important;
   margin-bottom: 30px;
@@ -110,12 +119,13 @@ body{
 .input-box{
   padding: 10px;
   width:100%;
-  border: 1px solid lightblue;
+  border: 1px solid rgb(0, 0, 0);
   
   
 }
 .input-box:focus{
   outline: none;
+  
 }
 button{
   background-color: lightblue;
