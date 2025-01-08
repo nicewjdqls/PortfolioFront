@@ -3,6 +3,8 @@ import api from "../api/api";
 import { CButton, CForm, CFormInput, CFormLabel, CFormFloating } from "@coreui/react";
 import { useNavigate } from "react-router-dom";  // useNavigate 훅을 임포트
 import loginButton from "./Sign in Naver.png";
+import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
+import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
 
 const LoginPage = ({ onLogin, onChangePage }) => {  
   const [userId, setUserId] = useState('');
@@ -43,12 +45,15 @@ const LoginPage = ({ onLogin, onChangePage }) => {
         setError(""); // 로그인 성공 시 에러 메시지 초기화
         setHasRedirected(true); // 리다이렉션을 했다고 기록
         navigate("/"); // 로그인 후 메인 페이지로 이동
+        toast.success('구정빈 홈페이지에 로그인했습니다.');
+
       } else {
         console.log("로그인 실패 메시지:", response.data.message);
         throw new Error(response.data.message);
       }
     } catch (error) {
       console.error("로그인 에러:", error);
+      toast.error('로그인에 실패했습니다.');
       setError(error.message);
     }
   };

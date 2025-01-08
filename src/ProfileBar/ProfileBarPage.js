@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode"; // jwt-decode에서 jwtDecode를 명시적으로 import
 import { CButton, CPopover, CAvatar } from "@coreui/react";
 import './ProfileBarPage.css'; // CSS 파일을 import
-
+import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
+import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
 const ProfileBarPage = ({ user, setUser, onLogout }) => { 
   const [userName, setUserName] = useState(""); // 사용자 이름을 저장할 state
   const [getId, setGetId] = useState(""); // 역할을 저장할 state

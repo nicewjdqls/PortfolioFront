@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
+import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
 import api from '../api/api';
 
 import { 
   CButton, CForm, CFormFloating, CFormInput, CFormLabel 
-} from '@coreui/react'; // CoreUI의 컴포넌트만 사용합니다.
+} from '@coreui/react';
 import SuccessModal from '../Modal/SuccessModal';
 import { FcApproval } from "react-icons/fc";
 import './SignUpPage.css';
@@ -57,14 +59,13 @@ function SignUpPage(props) {
     const reqSignUp = () => api.post('signUp', data)
     .then(res => {
         if (res.data.success) {
-            alert('회원가입 되었습니다.');
+            toast.success('회원가입에 성공했습니다!');
             props.onChangePage("login");
         } else {
-            alert('회원가입에 실패했습니다.');
+            toast.error('회원가입에 실패했습니다.');
         }
-        console.log(res, data);
     }).catch(err => {
-        alert(err.response.data.message);
+        toast.error(err.response.data.message || '오류가 발생했습니다.');
         console.log(err);
     });
 
@@ -72,9 +73,9 @@ function SignUpPage(props) {
     const checkValidation = () => {
         const validCheck = Object.values(valid).filter(value => value === true).length > 0;
         if (validCheck === true) {
-            alert('양식을 확인해주세요');
+            toast.warn('양식을 확인해주세요.');
         } else if (checkedId === false) {
-            alert('아이디 중복체크를 해주세요');
+            toast.warn('아이디 중복체크를 해주세요.');
         } else {
             reqSignUp();
         }        
@@ -84,12 +85,13 @@ function SignUpPage(props) {
     const checkId = () => api.get(`signUp/checkId/${form.id}`)
     .then(res => {
         if (res.data.success) {
-            alert("사용 가능한 아이디입니다.");
+            toast.success('사용 가능한 아이디입니다.');
             setCheckedId(true);
         } else {
-            alert("사용 불가능한 아이디입니다.");
+            toast.error('사용 불가능한 아이디입니다.');
         }
     }).catch(err => {
+        toast.error('아이디 중복체크 중 오류가 발생했습니다.');
         console.log(err);
     });
 
@@ -150,7 +152,7 @@ function SignUpPage(props) {
                     </div>
                 </CFormFloating>
 
-                {/* 비밀번호 입력*/}
+                {/* 비밀번호 입력 */}
                 <CFormFloating className="mb-3">
                     <CFormInput 
                         type="password" 
@@ -166,7 +168,7 @@ function SignUpPage(props) {
                     <p style={{color: "yellow", fontSize: "13px"}}>{validMessage}</p>
                 </CFormFloating>
 
-                {/* 비밀번호 재입력*/}
+                {/* 비밀번호 재입력 */}
                 <CFormFloating className="mb-3">
                     <CFormInput 
                         type="password" 
@@ -181,7 +183,7 @@ function SignUpPage(props) {
                     <CFormLabel htmlFor="floatingPasswordCheck">비밀번호 재입력</CFormLabel>
                 </CFormFloating>
 
-                {/* 이름 입력*/}
+                {/* 이름 입력 */}
                 <CFormFloating className="mb-3">
                     <CFormInput 
                         type="text" 
@@ -192,7 +194,7 @@ function SignUpPage(props) {
                     <CFormLabel htmlFor="floatingName">이름 입력</CFormLabel>
                 </CFormFloating>
 
-                {/* 휴대폰번호 입력*/}
+                {/* 휴대폰번호 입력 */}
                 <CFormFloating className="mb-3">
                     <CFormInput 
                         type="text" 

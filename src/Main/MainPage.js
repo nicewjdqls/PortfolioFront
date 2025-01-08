@@ -6,6 +6,8 @@ import TodoBoard from "../components/TodoBoard"; // TodoBoard 컴포넌트 가�
 import api from "../api/api"; // api 호출을 위한 api 객체
 import { jwtDecode } from "jwt-decode"; // jwtDecode 라이브러리 사용
 import './MainPage.css';
+import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
+import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -73,7 +75,8 @@ const MainPage = () => {
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
+        //alert(error.response.data.message);
       } else {
         alert("삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
         console.error("error", error);
@@ -97,7 +100,7 @@ const MainPage = () => {
   };
 
   const handleClick = () => {
-    alert("이력서를 보여드립니다.");
+    toast.info("진심을 담은 이력서입니다.");
     navigate('/about'); 
   };
 
