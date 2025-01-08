@@ -10,7 +10,8 @@ import Portfolio from "./Portfolio/PortfolioPage";
 import SideBarPage from "./SideBar/SideBarPage";  // 사이드바 컴포넌트 가져오기
 import About from "./About/AboutPage";
 import Skills from "./Skills/SkillsPage";
-import Profile from "./ProfileBar/ProfileBarPage";
+import Profile from "./ProfileBar/ProfileBarPage"; 
+import Test from "./test/TestPage";
 import Pdf1 from "./Pdf/PdfPage1";
 import Pdf2 from "./Pdf/PdfPage2";
 import Pdf3 from "./Pdf/PdfPage3";
@@ -54,6 +55,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/login" element={<LoginPage setUser={setUser} />} /> {/* setUser를 LoginPage에 전달 */}
+            <Route path="/test" element={<Test />} /> 
             <Route path="/pdf1" element={<Pdf1 />} />
             <Route path="/pdf2" element={<Pdf2 />} />
             <Route path="/pdf3" element={<Pdf3 />} />
