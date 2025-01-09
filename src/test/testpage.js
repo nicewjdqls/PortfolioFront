@@ -20,7 +20,7 @@ const TodoPage = ({ user, setUser }) => {
 
   const getTasks = async (page) => {
     try {
-      const response = await api.get(`/tasks?page=${page}&limit=10`); // 페이지와 limit을 쿼리로 전달
+      const response = await api.get(`/tasks?page=${page}&limit=5`); // 페이지와 limit을 쿼리로 전달
       setTodoList(response.data.data);
       setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
     } catch (error) {
