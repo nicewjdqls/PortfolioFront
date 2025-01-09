@@ -5,39 +5,45 @@ import api from "../api/api";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import { Pagination } from "@mui/material"; // 페이지네이션 컴포넌트 추가
 import { jwtDecode } from "jwt-decode";
 
-const TodoPage = ({ user, setUser }) => { 
+
+const TodoPage = ({ user, setUser }) => {
   const [todoList, setTodoList] = useState([]);
   const [todoValue, setTodoValue] = useState("");
   const [userName, setUserName] = useState(""); // 사용자 이름을 저장할 state
   const [userId, setUserId] = useState(""); // 사용자 ID를 저장할 state
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+  const [totalPages, setTotalPages] = useState(1); // 총 페이지 수
   const navigate = useNavigate(); 
 
-  const getTasks = async () => {
-    const response = await api.get("/tasks");
-    setTodoList(response.data.data);
+  const getTasks = async (page) => {
+    try {
+      const response = await api.get(`/tasks?page=${page}&limit=10`); // 페이지와 limit을 쿼리로 전달
+      setTodoList(response.data.data);
+      setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
+    } catch (error) {
+      console.log("Error fetching tasks:", error);
+    }
   };
 
   useEffect(() => {
-    getTasks();
-  }, []);
-  
+    getTasks(currentPage);
+  }, [currentPage]);
+
   useEffect(() => {
     const token = sessionStorage.getItem("token");
 
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        console.log("디코딩된 토큰:", decodedToken);
-        setUserName(decodedToken.userName || ""); // 사용자 이름 설정
-        setUserId(decodedToken.userId || ""); // 사용자 ID 설정
+        setUserName(decodedToken.userName || ""); 
+        setUserId(decodedToken.userId || "");
       } catch (error) {
         console.error("토큰 디코딩 오류 :", error);
       }
     } else {
-      // 비회원일 경우 userId와 userName을 'none'과 '비회원'으로 설정
-      console.log("토큰이 존재하지 않습니다. 비회원 사용자로 설정합니다.");
       setUserName('비회원');
       setUserId('none');
     }
@@ -48,37 +54,30 @@ const TodoPage = ({ user, setUser }) => {
       const response = await api.post("/tasks", {
         task: todoValue,
         isComplete: false,
-        userId: userId,  // userId를 함께 전달
-        userName: userName,  // userName을 함께 전달
+        userId: userId,  
+        userName: userName,  
       });
       if (response.status === 200) {
-        getTasks();
+        getTasks(currentPage); // 새로 추가된 작업을 현재 페이지에서 반영
       }
       setTodoValue("");
     } catch (error) {
       console.log("error:", error);
     }
   };
-  
+
   const deleteItem = async (id) => {
     try {
       const response = await api.delete(`/tasks/${id}`, {
-        data: { userId: userId } // 로그인된 userId와 함께 전달
-    });
-        
-        if (response.status === 200) {
-            getTasks(); // 삭제 후 목록 새로고침
-        }
+        data: { userId: userId }
+      });
+      if (response.status === 200) {
+        getTasks(currentPage); // 삭제 후 현재 페이지 반영
+      }
     } catch (error) {
-        if (error.response && error.response.data && error.response.data.message) {
-            // 서버에서 보낸 메시지를 alert 창으로 표시
-            alert(error.response.data.message);
-        } else {
-            alert("삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
-            console.error("error", error);
-        }
+      console.log("삭제 중 오류 발생:", error);
     }
-};
+  };
 
   const toggleComplete = async (id) => {
     try {
@@ -87,7 +86,7 @@ const TodoPage = ({ user, setUser }) => {
         isComplete: !task.isComplete,
       });
       if (response.status === 200) {
-        getTasks();
+        getTasks(currentPage); // 완료 상태 변경 후 새로고침
       }
     } catch (error) {
       console.log("error", error);
@@ -117,6 +116,16 @@ const TodoPage = ({ user, setUser }) => {
         todoList={todoList}
         deleteItem={deleteItem}
         toggleComplete={toggleComplete}
+      />
+
+      {/* 페이지네이션 컴포넌트 추가 */}
+      <Pagination
+        count={totalPages} // 총 페이지 수
+        page={currentPage} // 현재 페이지
+        onChange={(e, page) => setCurrentPage(page)} // 페이지 변경 시 currentPage 상태 업데이트
+        color="primary"
+        size="large"
+        sx={{ marginTop: 3 }}
       />
     </Container>
   );

@@ -42,6 +42,7 @@ const ProfileBarPage = ({ user, setUser, onLogout }) => {
             <CButton  
               className="s-button"
               onClick={() => {
+                //toast.info(`${userName}님 로그아웃 되었습니다`);
                 alert(`${userName}님 로그아웃 되었습니다`); // 사용자 이름을 포함한 로그아웃 알림
                 onLogout(); // 로그아웃 함수 호출
               }}
