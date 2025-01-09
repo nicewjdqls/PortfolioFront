@@ -5,7 +5,7 @@ import api from "../api/api";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import { Pagination } from "@mui/material"; // 페이지네이션 컴포넌트 추가
+import { Pagination, Stack } from "@mui/material"; // Stack 추가
 import { jwtDecode } from "jwt-decode";
 
 
@@ -118,15 +118,16 @@ const TodoPage = ({ user, setUser }) => {
         toggleComplete={toggleComplete}
       />
 
-      {/* 페이지네이션 컴포넌트 추가 */}
-      <Pagination
-        count={totalPages} // 총 페이지 수
-        page={currentPage} // 현재 페이지
-        onChange={(e, page) => setCurrentPage(page)} // 페이지 변경 시 currentPage 상태 업데이트
-        color="primary"
-        size="large"
-        sx={{ marginTop: 3 }}
-      />
+      {/* 페이지네이션 컴포넌트를 Stack으로 감싸서 가운데 정렬 */}
+      <Stack alignItems="center" sx={{ marginTop: 3 }}>
+        <Pagination
+          count={totalPages} // 총 페이지 수
+          page={currentPage} // 현재 페이지
+          onChange={(e, page) => setCurrentPage(page)} // 페이지 변경 시 currentPage 상태 업데이트
+          color="primary"
+          size="large"
+        />
+      </Stack>
     </Container>
   );
 };
