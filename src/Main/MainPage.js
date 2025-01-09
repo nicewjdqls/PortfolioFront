@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode"; // jwtDecode 라이브러리 사용
 import './MainPage.css';
 import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
 import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
+import { Pagination, Stack } from "@mui/material"; // Stack 추가
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ const MainPage = () => {
   const [todoValue, setTodoValue] = useState("");
   const [userName, setUserName] = useState(""); // 사용자 이름
   const [userId, setUserId] = useState(""); // 사용자 ID
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+  const [totalPages, setTotalPages] = useState(1); // 총 페이지 수
+
 
   // 방명록 추가 기능
   const addTodo = async () => {
@@ -26,7 +30,7 @@ const MainPage = () => {
         userName: userName,  // userName을 함께 전달
       });
       if (response.status === 200) {
-        getTasks();
+        getTasks(currentPage);
       }
       setTodoValue("");
     } catch (error) {
@@ -34,14 +38,20 @@ const MainPage = () => {
     }
   };
 
-  const getTasks = async () => {
-    const response = await api.get("/tasks");
-    setTodoList(response.data.data);
+  const getTasks = async (page) => {
+    try {
+      const response = await api.get(`/tasks?page=${page}&limit=10`); // 페이지와 limit을 쿼리로 전달
+      setTodoList(response.data.data);
+      setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
+    } catch (error) {
+      console.log("Error fetching tasks:", error);
+    }
   };
 
   useEffect(() => {
-    getTasks();
-  }, []);
+    getTasks(currentPage);
+  }, [currentPage]);
+
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
@@ -71,7 +81,7 @@ const MainPage = () => {
       });
 
       if (response.status === 200) {
-        getTasks(); // 삭제 후 목록 새로고침
+        getTasks(currentPage); // 삭제 후 목록 새로고침
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
@@ -92,7 +102,7 @@ const MainPage = () => {
         isComplete: !task.isComplete,
       });
       if (response.status === 200) {
-        getTasks();
+        getTasks(currentPage);
       }
     } catch (error) {
       console.log("error", error);
@@ -172,6 +182,16 @@ const MainPage = () => {
           deleteItem={deleteItem}
           toggleComplete={toggleComplete}
         />
+              {/* 페이지네이션 컴포넌트를 Stack으로 감싸서 가운데 정렬 */}
+      <Stack alignItems="center" sx={{ marginTop: 3 }}>
+        <Pagination
+          count={totalPages} // 총 페이지 수
+          page={currentPage} // 현재 페이지
+          onChange={(e, page) => setCurrentPage(page)} // 페이지 변경 시 currentPage 상태 업데이트
+          color="primary"
+          size="large"
+        />
+      </Stack>
       </Container>
 
       {/* Project, Main stack 섹션 */}
