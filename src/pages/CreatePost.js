@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
+import { Link } from 'react-router-dom';
 
 const CreatePost = ({ user }) => {
   const [title, setTitle] = useState('');
@@ -67,9 +68,16 @@ const CreatePost = ({ user }) => {
             onEditorChange={(content) => setContent(content)}
           />
         </div>
+        <div>
         <button type="submit" className="btn btn-primary mt-3">
           게시글 작성
         </button>
+        <Link to ='/pages'>
+          <button type="button"  className="btn btn-primary mt-3">
+          뒤로가기
+          </button>
+        </Link>
+        </div>
       </form>
     </div>
   );
