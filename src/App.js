@@ -13,12 +13,16 @@ import SideBarPage from "./SideBar/SideBarPage";
 import About from "./About/AboutPage";
 import Skills from "./Skills/SkillsPage";
 import Profile from "./ProfileBar/ProfileBarPage"; 
-import Test from "./test/TestPage";
+import Test from "./pages/BoardPage";
 import Pdf1 from "./Pdf/PdfPage1";
 import Pdf2 from "./Pdf/PdfPage2";
 import Pdf3 from "./Pdf/PdfPage3";
 import LoginPage from "./Login/LoginPage";  
 import api from "./api/api";
+import BoardPage from "./pages/BoardPage";  // 게시판 페이지
+import CreatePost from "./pages/CreatePost";  // 글 작성 페이지
+import EditPost from "./pages/EditPost";  // 글 수정 페이지
+import PostPage from './pages/PostPage';    // 게시글 상세 페이지
 
 function App() {
   const [user, setUser] = useState(null);
@@ -60,7 +64,11 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/login" element={<LoginPage setUser={setUser} />} />
-            <Route path="/test" element={<Test />} />
+           {/* 게시판 관련 페이지 */}
+            <Route path="/pages" element={<BoardPage user={user} />} />
+            <Route path="/create" element={<CreatePost user={user} />} />
+            <Route path="/edit/:id" element={<EditPost user={user} />} />
+            <Route path="/board/post/:id" element={<PostPage />} /> {/* 여기에서 id로 게시글을 조회 */}
             <Route path="/pdf1" element={<Pdf1 />} />
             <Route path="/pdf2" element={<Pdf2 />} />
             <Route path="/pdf3" element={<Pdf3 />} />
