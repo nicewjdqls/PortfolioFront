@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; 
 import api from '../api/api';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Dropdown } from 'react-bootstrap';  // Dropdown 추가
 import { Editor } from '@tinymce/tinymce-react';
 import { CButton } from '@coreui/react';
 import './pages.css';
@@ -13,6 +13,18 @@ const PostPage = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const hasFetched = useRef(false);
+  const [apiKey, setApiKey] = useState(null); // API 키 상태 추가
+  const [showOptions, setShowOptions] = useState(false); // 옵션 버튼 토글 상태
+
+  // API 키 가져오기
+  const fetchApiKey = async () => {
+    try {
+      const response = await api.get('/board/get-api-key'); // 백엔드에서 API 키 요청
+      setApiKey(response.data.apiKey);
+    } catch (error) {
+      console.error('API 키 가져오기 실패:', error);
+    }
+  };
 
   // 게시글 조회 함수
   const fetchPost = async () => {
@@ -20,7 +32,7 @@ const PostPage = () => {
       const response = await api.get(`/board/post/${id}`);
       setPost(response.data);
     } catch (error) {
-      console.error('게시글 조회 실패22:', error);
+      console.error('게시글 조회 실패:', error);
     }
   };
 
@@ -44,23 +56,29 @@ const PostPage = () => {
       });
 
       if (response.status === 200) {
-        alert('게시글이 삭제되었습니다!33');
+        alert(`게시물이 삭제되었습니다.`);
         navigate('/pages'); // 삭제 후 게시판 페이지로 리디렉션
       }
     } catch (error) {
       console.error('게시글 삭제 실패:', error);
-      alert('게시글 삭제에 실패했습니다.44');
+      alert('본인의 게시글만 삭제가 가능합니다.');
     }
+  };
+
+  // 수정 페이지로 이동
+  const handleEdit = () => {
+    navigate(`/edit-post/${id}`);  // 수정 페이지로 이동
   };
 
   useEffect(() => {
     if (!hasFetched.current) {
+      fetchApiKey(); // API 키 가져오기
       fetchPost();
       hasFetched.current = true;
     }
   }, [id]);
 
-  if (!post) return <div>게시글을 불러오는 중...</div>;
+  if (!post || !apiKey) return <div>로딩 중...</div>; // API 키 또는 게시글 로딩 대기
 
   return (
     <div>
@@ -68,7 +86,22 @@ const PostPage = () => {
         <Col>
           <Card className="card-container">
             <Card.Body>
-              <Card.Title className="display-4">{post.title}</Card.Title>
+              <Card.Title className="display-4">
+                {post.title}
+
+                {/* 오른쪽 버튼 메뉴 */}
+                <Dropdown align="end" className="float-end">
+                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    옵션
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={handleEdit}>수정</Dropdown.Item>  {/* 수정 버튼 */}
+                    <Dropdown.Item onClick={handleDelete}>삭제</Dropdown.Item> {/* 삭제 버튼 */}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Card.Title>
+
               <Card.Text>
                 <strong>조회수:</strong> {post.views} <br />
                 <strong>작성일:</strong> {new Date(post.created_at).toLocaleDateString()}
@@ -77,16 +110,14 @@ const PostPage = () => {
               <Card.Text>
                 <strong>내용:</strong>
                 <Editor
-                  apiKey="zemc9onb4vavey6v1q7452wv9uo7y20tko77rz9ygre6ffr0"
+                  apiKey={apiKey} // 가져온 API 키를 사용
                   value={post.content}
                   init={{
                     height: 500,
                     width: '100%',
                     menubar: false,
                     plugins: [
-                      'advlist autolink lists link image charmap print preview anchor',
-                      'searchreplace visualblocks code fullscreen',
-                      'insertdatetime media table paste code help wordcount',
+                      'advlist autolink lists link image charmap print preview anchor', // 기본적인 플러그인만 사용
                     ],
                     toolbar:
                       'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image',
@@ -99,12 +130,7 @@ const PostPage = () => {
                 <Link to="/pages" style={{ color: 'white', textDecoration: 'none' }}>
                   게시판으로 돌아가기
                 </Link>
-              </CButton> 
-
-              {/* 삭제 버튼 추가 */}
-              <CButton color="danger" className="mt-3" onClick={handleDelete}>
-                삭제하기
-              </CButton>              
+              </CButton>
             </Card.Body>
           </Card>
         </Col>

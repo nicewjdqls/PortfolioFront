@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
@@ -8,6 +8,21 @@ const CreatePost = ({ user }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
+  const [apiKey, setApiKey] = useState(null); // API 키 상태 추가
+
+  // API 키 가져오기
+  useEffect(() => {
+    const fetchApiKey = async () => {
+      try {
+        const response = await api.get('/board/get-api-key'); // 백엔드에서 API 키 요청
+        setApiKey(response.data.apiKey); // API 키 상태 저장
+      } catch (error) {
+        console.error('API 키 가져오기 실패:', error);
+      }
+    };
+
+    fetchApiKey(); // 컴포넌트 마운트 시 API 키 요청
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +34,7 @@ const CreatePost = ({ user }) => {
         title,
         content,
         author: user.userId,
+        userName: user.userName,
       };
 
       const response = await api.post('/board/create', postData, { headers });
@@ -29,6 +45,10 @@ const CreatePost = ({ user }) => {
       alert('게시글 작성에 실패했습니다.');
     }
   };
+
+  if (!apiKey) {
+    return <div>로딩 중...</div>; // API 키 로딩 대기
+  }
 
   return (
     <div className="container mt-4">
@@ -46,7 +66,7 @@ const CreatePost = ({ user }) => {
         </div>
         <div className="form-group">
         <Editor
-      apiKey='zemc9onb4vavey6v1q7452wv9uo7y20tko77rz9ygre6ffr0'
+            apiKey={apiKey} // 가져온 API 키를 사용
       init={{
         plugins: [
           // Core editing features
