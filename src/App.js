@@ -69,6 +69,8 @@ function App() {
             <Route path="/create" element={<CreatePost user={user} />} />
             <Route path="/edit/:id" element={<EditPost user={user} />} />
             <Route path="/board/post/:id" element={<PostPage />} /> {/* 여기에서 id로 게시글을 조회 */}
+            <Route path="/board/edit/:id" element={<EditPost />} />
+
             <Route path="/pdf1" element={<Pdf1 />} />
             <Route path="/pdf2" element={<Pdf2 />} />
             <Route path="/pdf3" element={<Pdf3 />} />

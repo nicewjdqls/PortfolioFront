@@ -67,7 +67,7 @@ const PostPage = () => {
 
   // 수정 페이지로 이동
   const handleEdit = () => {
-    navigate(`/edit-post/${id}`);  // 수정 페이지로 이동
+    navigate(`/board/edit/${id}`);  // 수정 페이지로 이동
   };
 
   useEffect(() => {
@@ -98,7 +98,8 @@ const PostPage = () => {
                   <Dropdown.Menu>
                     <Dropdown.Item onClick={handleEdit}>수정</Dropdown.Item>  {/* 수정 버튼 */}
                     <Dropdown.Item onClick={handleDelete}>삭제</Dropdown.Item> {/* 삭제 버튼 */}
-                  </Dropdown.Menu>
+                    <Dropdown.Item as={Link} to="/pages">뒤로가기</Dropdown.Item>
+                    </Dropdown.Menu>
                 </Dropdown>
               </Card.Title>
 
