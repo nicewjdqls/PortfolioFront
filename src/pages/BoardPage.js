@@ -35,7 +35,7 @@ const BoardPage = () => {
           <tr>
             <th>글 제목</th>
             <th>조회수</th>
-            <th>작성일</th>
+            <th>작성일 </th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +48,7 @@ const BoardPage = () => {
                   </Link>
                 </td>
                 <td>{post.views}</td>
-                <td>{new Date(post.createdAt).toLocaleDateString()}</td>
+                <td>{new Date(post.created_at).toLocaleDateString()}</td>
               </tr>
             ))
           ) : (
