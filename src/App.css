@@ -18,6 +18,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 /* 본문(content) 스타일 */
@@ -221,4 +222,10 @@ button {
     padding: 15px;
     max-width: 90%; /* 로그인 박스를 화면 너비에 맞게 조정 */
   }
+
+  .click-button {
+    width: 100%; /* 버튼 너비를 모바일에 맞게 조정 */
+    padding: 10px 0;
+  }
 }
+
