@@ -1,17 +1,14 @@
-/* 기본적인 스타일 초기화 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* 전체 페이지에 구름 배경을 추가 */
 body {
   font-family: Arial, sans-serif;
-  background: url('https://www.transparenttextures.com/patterns/clouds.png') repeat, #f8f9fa; /* 구름 배경 이미지 */
-  background-size: cover; /* 배경 이미지 크기 조정 */
-  background-attachment: fixed; /* 배경이 스크롤 시 따라가지 않도록 고정 */
-  height: 100vh; /* 전체 화면을 차지하도록 설정 */
+  background: url('https://www.transparenttextures.com/patterns/clouds.png') repeat, #f8f9fa;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: lightblue;
+  background-color: aliceblue !important;
 }
 
 /* 전체 컨테이너 스타일 */
@@ -20,6 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
 }
 
 /* 본문(content) 스타일 */
@@ -27,7 +25,7 @@ body {
   flex: 1;
   padding: 20px;
   overflow: auto;
-  z-index: 1000; /* 콘텐츠가 배경 이미지 위에 표시되도록 설정 */
+  z-index: 1000;
 }
 
 /* 버튼 스타일 */
@@ -82,114 +80,145 @@ footer {
   width: 100%;
 }
 
-.footer-logo span {
-  font-size: 14px;
-}
-
-body{
-  color: lightblue ;
-  background-color: aliceblue !important; 
-}
-
-
-
-.todo-item{
+/* Todo 아이템 스타일 */
+.todo-item {
   border: 1px solid rgb(0, 0, 0);
   background-color: rgb(230, 244, 247);
   display: flex;
-  
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  flex-wrap: wrap; /* 요소가 공간 부족 시 줄바꿈 */
 }
+
 .todo-content {
   font-size: 16px;
 }
 
 .todo-writer {
-  text-align: right; /* 오른쪽 정렬 */
+  text-align: right;
   font-size: 14px;
   color: #777;
   margin-top: 5px;
 }
 
-.add-item-row{
-  margin-top:50px !important;
+.add-item-row {
+  margin-top: 50px !important;
   margin-bottom: 30px;
 }
-.input-box{
+
+.input-box {
   padding: 10px;
-  width:100%;
+  width: 100%;
   border: 1px solid rgb(0, 0, 0);
-  
-  
 }
-.input-box:focus{
+
+.input-box:focus {
   outline: none;
-  
 }
-button{
+
+button {
   background-color: lightblue;
   color: white;
 }
-.button-add{
+
+.button-add {
   height: 40px;
   width: 100%;
   border: none;
   background-color: lightblue;
   color: white;
 }
-.button-add:hover{
+
+.button-add:hover {
   background-color: white;
   color: lightblue;
   border: 2px solid lightblue;
 }
-.button-delete{
+
+.button-delete {
   background-color: white;
   border: 2px solid lightblue;
   color: lightblue;
   margin: 10px;
 }
-.button-delete:hover{
+
+.button-delete:hover {
   background-color: lightblue;
   color: #ffffff;
 }
 
-.item-complete{
+.item-complete {
   background-color: gainsboro;
-  color:white;
+  color: white;
 }
 
-.login-box{
-  border:1px solid lightblue;
+.login-box {
+  border: 1px solid lightblue;
   max-width: 600px;
   width: 100%;
   background-color: white;
   padding: 20px;
 }
-.login-box label{
+
+.login-box label {
   font-weight: 700;
 }
 
-.display-center{
+.display-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
 }
 
-.button-box{
-  display:flex;
-  justify-content: space-between
+.button-box {
+  display: flex;
+  justify-content: space-between;
 }
 
-.button-primary{
+.button-primary {
   background-color: lightblue;
   color: #ffffff;
-  border:none;
+  border: none;
 }
 
-.red_error{
-  color : red;
+.red_error {
+  color: red;
+}
+
+/* 미디어 쿼리 추가: 모바일 화면에 맞게 스타일 조정 */
+@media screen and (max-width: 768px) {
+  .App {
+    padding: 10px; /* 작은 화면에서 여백을 줄임 */
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .attention-title {
+    font-size: 20px; /* 제목 크기 줄이기 */
+  }
+
+  .todo-item {
+    flex-direction: column; /* 세로로 나열 */
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .profile-image {
+    width: 90%; /* 모바일에서 프로필 이미지를 적당히 줄임 */
+  }
+
+  .button-add, .button-delete {
+    width: 100%; /* 버튼을 화면 너비에 맞게 확장 */
+    margin: 5px 0;
+  }
+
+  .login-box {
+    padding: 15px;
+    max-width: 90%; /* 로그인 박스를 화면 너비에 맞게 조정 */
+  }
 }
