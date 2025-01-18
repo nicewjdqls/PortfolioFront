@@ -1,5 +1,3 @@
-/* MainPage.css */
-
 /* 메인 페이지 */
 .main-page {
     max-width: 1200px;
@@ -119,15 +117,62 @@
     transform: scale(1.1);
 }
 
+/* 미디어 쿼리 - 화면 크기가 768px 이하일 때 */
 @media (max-width: 768px) {
+    .about-and-cards-section {
+        flex-direction: column; /* 이미지와 내용이 세로로 정렬되도록 변경 */
+        gap: 20px;
+    }
+
+    .attention-title {
+        font-size: 1.6rem; /* 제목 크기 줄이기 */
+    }
+
+    .about-image {
+        width: 250px; /* 모바일에서 이미지 크기 조정 */
+        height: 250px;
+    }
+
+    .about-content {
+        padding-right: 0; /* 모바일에서 오른쪽 패딩 제거 */
+    }
+
+    .cards-section {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
     .card {
-        width: calc(50% - 20px);
+        width: calc(50% - 20px); /* 카드 크기를 반으로 줄임 */
     }
 }
 
+/* 미디어 쿼리 - 화면 크기가 480px 이하일 때 */
 @media (max-width: 480px) {
+    .attention-title {
+        font-size: 1.4rem; /* 제목 크기 더 줄이기 */
+    }
+
+    .about-image {
+        width: 200px; /* 이미지 크기 더욱 줄이기 */
+        height: 200px;
+    }
+
+    .about-section {
+        font-size: 1.5rem; /* 소개 섹션 폰트 크기 줄이기 */
+    }
+
+    .about-content {
+        font-size: 0.9rem; /* 본문 폰트 크기 줄이기 */
+    }
+
+    .cards-section {
+        gap: 15px;
+    }
+
     .card {
-        width: 100%;
+        width: 100%; /* 카드가 화면 너비에 맞게 확장 */
     }
 }
 
