@@ -9,6 +9,7 @@ body {
   padding: 0;
   color: lightblue;
   background-color: aliceblue !important;
+  min-height: 100vh;
 }
 
 /* 전체 컨테이너 스타일 */
@@ -38,6 +39,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  width: 100%;
 }
 
 .click-button:hover {
@@ -227,5 +229,12 @@ button {
     width: 100%; /* 버튼 너비를 모바일에 맞게 조정 */
     padding: 10px 0;
   }
-}
 
+  /* 기타 글자 크기, 마진, 패딩 조정 */
+  .todo-content {
+    font-size: 14px;
+  }
+  .todo-writer {
+    font-size: 12px;
+  }
+}
