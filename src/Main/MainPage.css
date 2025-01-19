@@ -1,3 +1,5 @@
+/* MainPage.css */
+
 /* 메인 페이지 */
 .main-page {
     max-width: 1200px;
@@ -33,13 +35,14 @@
 /* 이미지 및 소개 내용 영역 */
 .about-and-cards-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 40px;
     width: 100%;
+    max-width: 1200px;
     margin-top: 40px;
-    position: relative;
-    overflow: hidden;
+    position: relative; /* canvas가 이 영역 내에 들어가도록 함 */
+    overflow: hidden; /* 폭죽 애니메이션이 영역 밖으로 나가지 않도록 함 */
 }
 
 /* 프로필 이미지 */
@@ -82,13 +85,11 @@
 /* 카드 섹션 */
 .cards-section {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap; /* 화면 크기에 맞게 줄 바꿈 */
+    justify-content: center;
+    gap: 30px;
     margin-top: 50px;
 }
 
-/* 개별 카드 */
 .card {
     background-color: #fff;
     border-radius: 12px;
@@ -96,7 +97,7 @@
     text-align: center;
     flex: 1;
     max-width: 320px;
-    min-width: 250px;
+    min-width: 280px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -118,43 +119,15 @@
     transform: scale(1.1);
 }
 
-/* 반응형: 화면 크기가 768px 이하일 때 */
 @media (max-width: 768px) {
-    .about-and-cards-section {
-        flex-direction: column; /* 세로로 배치 */
-        align-items: center;
-    }
-
-    .about-image {
-        width: 250px;
-        height: 250px;
-    }
-
-    .about-content {
-        max-width: 90%;
-        text-align: center;
-    }
-
-    .cards-section {
-        flex-direction: column;
-        gap: 15px;
+    .card {
+        width: calc(50% - 20px);
     }
 }
 
-/* 반응형: 화면 크기가 480px 이하일 때 */
 @media (max-width: 480px) {
-    .about-image {
-        width: 200px;
-        height: 200px;
-    }
-
-    .about-content {
-        font-size: 1.2rem; /* 텍스트 크기 조정 */
-    }
-
     .card {
-        max-width: 100%;
-        min-width: 100%;
+        width: 100%;
     }
 }
 
@@ -179,7 +152,7 @@
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 15px; /* 태그 간격 확대 */
     justify-content: center;
 }
 
@@ -191,7 +164,7 @@
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: bold;
+    font-weight: bold; /* 태그 글씨 두껍게 */
 }
 
 .tag:hover {
