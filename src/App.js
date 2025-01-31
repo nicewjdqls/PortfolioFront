@@ -23,6 +23,7 @@ import BoardPage from "./pages/BoardPage";  // 게시판 페이지
 import CreatePost from "./pages/CreatePost";  // 글 작성 페이지
 import EditPost from "./pages/EditPost";  // 글 수정 페이지
 import PostPage from './pages/PostPage';    // 게시글 상세 페이지
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ function App() {
       const storedToken = sessionStorage.getItem("token");
       console.log("토큰:", storedToken); 
       if (storedToken) {
-        const response = await api.get("/user/me");
+        const response = await api.get(`${API_BASE_URL}/user/me`);
         setUser(response.data.user);
         toast.success("사용자 정보를 성공적으로 불러왔습니다.");
       } else {

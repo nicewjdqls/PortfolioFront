@@ -1,8 +1,9 @@
 import axios from "axios";
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 // 환경 변수에서 백엔드 API URL을 가져옴
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',  // 백엔드 URL
+  baseURL: API_BASE_URL || 'http://localhost:5000/api',  // 백엔드 URL
   headers: {
     "Content-Type": "application/json",
     // 초기 헤더에 토큰을 넣지 않음, 요청마다 동적으로 처리
@@ -16,7 +17,7 @@ api.interceptors.request.use(
   (request) => {
     const token = sessionStorage.getItem("token"); // 항상 세션 스토리지에서 가져오기
     if (token) {
-      request.headers["authorization"] = `Bearer ${token}`; // Bearer와 함께 설정
+      request.headers["Authorization"] = `Bearer ${token}`; // Bearer와 함께 설정
     } else {
       console.log("No token found in session storage."); // 디버깅용
     }

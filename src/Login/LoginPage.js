@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import api from "../api/api";
 import { CButton, CForm, CFormInput, CFormLabel, CFormFloating } from "@coreui/react";
-import { useNavigate } from "react-router-dom";  // useNavigate 훅을 임포트
+import { useNavigate } from "react-router-dom";
 import loginButton from "./Sign in Naver.png";
-import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
-import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const LoginPage = ({ onLogin, onChangePage }) => {  
+const LoginPage = ({ onLogin, onChangePage }) => {
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
   const [error, setError] = useState('');
   const [hasRedirected, setHasRedirected] = useState(false); // 리다이렉션 여부를 관리하는 상태
   const navigate = useNavigate(); // useNavigate 사용하여 페이지 이동
+  const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
   useEffect(() => {
     const storedToken = sessionStorage.getItem("token");
@@ -19,7 +20,7 @@ const LoginPage = ({ onLogin, onChangePage }) => {
       navigate("/"); // 로그인된 상태라면 메인 페이지로 리다이렉트
       setHasRedirected(true); // 리다이렉션이 한 번 발생했음을 기록
     }
-  }, [navigate, hasRedirected]); // hasRedirected 상태를 의존성 배열에 추가
+  }, [navigate, hasRedirected]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -27,7 +28,7 @@ const LoginPage = ({ onLogin, onChangePage }) => {
     console.log("로그인 요청 데이터:", { userId, userPw });
 
     try {
-      const response = await api.post('/user/login', { userId, userPw });
+      const response = await api.post(`${API_BASE_URL}/user/login`, { userId, userPw });
 
       console.log("API 응답:", response);
       console.log("응답 데이터:", response.data);
@@ -36,11 +37,11 @@ const LoginPage = ({ onLogin, onChangePage }) => {
         console.log("토큰 확인:", response.data.token);
 
         onLogin(response.data.user); // 로그인 후 onLogin 호출
-        sessionStorage.setItem("token", response.data.token);
-
-        console.log("저장된 토큰:", sessionStorage.getItem("token"));
+        sessionStorage.setItem("token", response.data.token); // 토큰을 sessionStorage에 저장
 
         api.defaults.headers["authorization"] = "Bearer " + response.data.token;
+
+        console.log("저장된 토큰:", sessionStorage.getItem("token"));
 
         setError(""); // 로그인 성공 시 에러 메시지 초기화
         setHasRedirected(true); // 리다이렉션을 했다고 기록

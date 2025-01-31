@@ -7,6 +7,7 @@ import { CButton } from '@coreui/react';
 import './pages.css';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode"; // jwtDecode 라이브러리 사용
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const PostPage = () => {
   // API 키 가져오기
   const fetchApiKey = async () => {
     try {
-      const response = await api.get('/board/get-api-key'); // 백엔드에서 API 키 요청
+      const response = await api.get(`${API_BASE_URL}/board/get-api-key`); // 백엔드에서 API 키 요청
       setApiKey(response.data.apiKey);
     } catch (error) {
       console.error('API 키 가져오기 실패:', error);
@@ -29,7 +30,7 @@ const PostPage = () => {
   // 게시글 조회 함수
   const fetchPost = async () => {
     try {
-      const response = await api.get(`/board/post/${id}`);
+      const response = await api.get(`${API_BASE_URL}/board/post/${id}`);
       setPost(response.data);
     } catch (error) {
       console.error('게시글 조회 실패:', error);
@@ -48,8 +49,9 @@ const PostPage = () => {
 
       const decodedToken = jwtDecode(token); // JWT 디코딩하여 userId 확인
       const { userId } = decodedToken;
+      console.log(`[프론트엔드] JWT에서 추출한 userId:`, userId); // ✅ 로그 추가
 
-      const response = await api.delete(`/board/${id}`, {
+      const response = await api.delete(`${API_BASE_URL}/board/post/${id}`, {
         headers: {
           Authorization: `Bearer ${token}` // Authorization 헤더에 토큰을 담아 보냄
         }
@@ -114,7 +116,7 @@ const PostPage = () => {
                   apiKey={apiKey} // 가져온 API 키를 사용
                   value={post.content}
                   init={{
-                    height: 500,
+                    height: 1000,
                     width: '100%',
                     menubar: false,
                     plugins: [

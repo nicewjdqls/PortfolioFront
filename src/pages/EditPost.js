@@ -5,6 +5,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { CButton } from '@coreui/react';
 import './pages.css';
 import { jwtDecode } from 'jwt-decode';
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 const EditPostPage = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const EditPostPage = () => {
   // API 키 가져오기
   const fetchApiKey = async () => {
     try {
-      const response = await api.get('/board/get-api-key');
+      const response = await api.get(`${API_BASE_URL}/board/get-api-key`);
       setApiKey(response.data.apiKey);
     } catch (error) {
       console.error('API 키 가져오기 실패:', error);
@@ -38,7 +39,7 @@ const EditPostPage = () => {
       const { userId } = decodedToken;
 
       // 게시글과 작성자 정보 가져오기
-      const response = await api.get(`/board/post/${id}`, {
+      const response = await api.get(`${API_BASE_URL}/board/post/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Authorization 헤더에 토큰을 담아 보냄
         },
@@ -72,7 +73,7 @@ const EditPostPage = () => {
       const decodedToken = jwtDecode(token); // JWT 디코딩하여 userId 확인
       const { userId } = decodedToken;
 
-      const response = await api.put(`/board/edit/${id}`, post, {
+      const response = await api.put(`${API_BASE_URL}/board/edit/${id}`, post, {
         headers: {
           Authorization: `Bearer ${token}`, // Authorization 헤더에 토큰을 담아 보냄
         },

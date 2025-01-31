@@ -10,6 +10,8 @@ import SuccessModal from '../Modal/SuccessModal';
 import { FcApproval } from "react-icons/fc";
 import './SignUpPage.css';
 
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
+
 function SignUpPage(props) {
     const [validMessage, setValidMessage] = useState('');    
     const [checkedId, setCheckedId] = useState(false);
@@ -56,7 +58,7 @@ function SignUpPage(props) {
     }, [form.phone]);
 
     // 회원가입 데이터 전송 함수
-    const reqSignUp = () => api.post('signUp', data)
+    const reqSignUp = () => api.post(`${API_BASE_URL}/signUp`, data)
     .then(res => {
         if (res.data.success) {
             toast.success('회원가입에 성공했습니다!');
@@ -82,18 +84,23 @@ function SignUpPage(props) {
     };
 
     // 아이디 중복체크 전송 함수
-    const checkId = () => api.get(`signUp/checkId/${form.id}`)
-    .then(res => {
-        if (res.data.success) {
-            toast.success('사용 가능한 아이디입니다.');
-            setCheckedId(true);
-        } else {
-            toast.error('사용 불가능한 아이디입니다.');
-        }
-    }).catch(err => {
-        toast.error('아이디 중복체크 중 오류가 발생했습니다.');
-        console.log(err);
-    });
+    const checkId = () => {
+        api.get(`${API_BASE_URL}/signUp/checkId/${form.id}`)
+            .then(res => {
+                // Lambda에서 'success'가 true일 경우
+                if (res.data.success) {
+                    toast.success(res.data.message);  // "사용 가능한 아이디입니다."
+                    setCheckedId(true);  // 중복 체크 성공
+                } else {
+                    toast.error(res.data.message || '사용 불가능한 아이디입니다.');  // 아이디가 이미 존재하면
+                }
+            })
+            .catch(err => {
+                // 에러 발생 시
+                toast.error(err.response?.data?.message || '아이디 중복체크 중 오류가 발생했습니다.');
+                console.log(err);
+            });
+    };
 
     const handleNumericInput = (e) => {
         const allowedKeys = ["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"];

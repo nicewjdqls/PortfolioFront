@@ -4,6 +4,7 @@ import api from '../api/api';
 import './pages.css';
 import { Pagination, Stack } from "@mui/material";
 import { Container } from 'react-bootstrap';
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 const BoardPage = () => {
     const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ const BoardPage = () => {
 
     const fetchPosts = async (page = 1) => {
         try {
-            const response = await api.get(`/board?page=${page}&limit=5`);
+            const response = await api.get(`${API_BASE_URL}/board?page=${page}&limit=5`);
             const { posts, totalPages } = response.data;
 
             setPosts(posts);

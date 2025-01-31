@@ -9,6 +9,7 @@ import './MainPage.css';
 import { toast } from 'react-toastify'; // Toast 메시지 라이브러리 추가
 import 'react-toastify/dist/ReactToastify.css'; // Toast 메시지 스타일
 import { Pagination, Stack } from "@mui/material"; // Stack 추가
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const MainPage = () => {
   // 방명록 추가 기능
   const addTodo = async () => {
     try {
-      const response = await api.post("/tasks", {
+      const response = await api.post(`${API_BASE_URL}/tasks`, {
         task: todoValue,
         isComplete: false,
         userId: userId,  // userId를 함께 전달
@@ -40,7 +41,7 @@ const MainPage = () => {
 
   const getTasks = async (page) => {
     try {
-      const response = await api.get(`/tasks?page=${page}&limit=5`); // 페이지와 limit을 쿼리로 전달
+      const response = await api.get(`${API_BASE_URL}/tasks?page=${page}&limit=5`); // 페이지와 limit을 쿼리로 전달
       setTodoList(response.data.data);
       setTotalPages(response.data.totalPages); // 총 페이지 수 업데이트
     } catch (error) {
@@ -76,7 +77,7 @@ const MainPage = () => {
   // 방명록 항목 삭제
   const deleteItem = async (id) => {
     try {
-      const response = await api.delete(`/tasks/${id}`, {
+      const response = await api.delete(`${API_BASE_URL}/tasks/${id}`, {
         data: { userId: userId } // 로그인된 userId와 함께 전달
       });
 
@@ -98,7 +99,7 @@ const MainPage = () => {
   const toggleComplete = async (id) => {
     try {
       const task = todoList.find((item) => item.id === id);
-      const response = await api.put(`/tasks/${id}`, {
+      const response = await api.put(`${API_BASE_URL}/tasks/${id}`, {
         isComplete: !task.isComplete,
       });
       if (response.status === 200) {

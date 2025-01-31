@@ -3,6 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
 import { Link } from 'react-router-dom';
+const API_BASE_URL = "https://yfnsgsnkhb.execute-api.ap-northeast-2.amazonaws.com/Prod";
 
 const CreatePost = ({ user }) => {
   const [title, setTitle] = useState('');
@@ -14,7 +15,7 @@ const CreatePost = ({ user }) => {
   useEffect(() => {
     const fetchApiKey = async () => {
       try {
-        const response = await api.get('/board/get-api-key'); // 백엔드에서 API 키 요청
+        const response = await api.get(`${API_BASE_URL}/board/get-api-key`); // 백엔드에서 API 키 요청
         setApiKey(response.data.apiKey); // API 키 상태 저장
       } catch (error) {
         console.error('API 키 가져오기 실패:', error);
@@ -27,7 +28,7 @@ const CreatePost = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const headers = { Authorization: `Bearer ${token}` };
 
       const postData = {
@@ -37,7 +38,7 @@ const CreatePost = ({ user }) => {
         userName: user.userName,
       };
 
-      const response = await api.post('/board/create', postData, { headers });
+      const response = await api.post(`${API_BASE_URL}/board/create`, postData, { headers });
       alert('게시글이 작성되었습니다!');
       navigate('/pages');
     } catch (error) {
